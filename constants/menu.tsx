@@ -1,4 +1,5 @@
 
+import { MenuItemProps } from "@/@types/menu";
 import {
   HiHome,
   HiUser,
@@ -8,7 +9,6 @@ import {
   HiMail,
 } from "react-icons/hi";
 
-import { MenuItemProps } from "../types/menu";
 import { HiTrophy } from "react-icons/hi2";
 
 

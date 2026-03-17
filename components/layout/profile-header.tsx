@@ -21,7 +21,7 @@ export default function ProfileHeader() {
 
             <div className="mt-1 flex items-center gap-2 lg:mt-4">
                 <Link href="/" passHref>
-                    <h2 className="grow text-lg font-medium lg:text-xl text-center">
+                    <h2 className="grow text-lg font-medium text-center">
                         Muhammad Hanif Sya'bani
                     </h2>
                 </Link>

@@ -126,4 +126,25 @@
   html {
     @apply font-sans;
   }
+
+
+  ::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  ::-webkit-scrollbar-track {
+    border-radius: 3px;
+    background-color: transparent;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    border: 2px solid;
+    background-color: theme("colors.neutral.600");
+    border-color: theme("colors.neutral.300");
+  }
+  .dark ::-webkit-scrollbar-thumb {
+    background-color: theme("colors.neutral.400");
+  }
+  
 }

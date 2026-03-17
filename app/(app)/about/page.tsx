@@ -1,7 +1,9 @@
+import Container from "@/components/ui/container-custom";
+
 export default function page() {
     return (
-        <div>
+        <Container>
             <h1>About</h1>
-        </div>
+        </Container>
     )
 }

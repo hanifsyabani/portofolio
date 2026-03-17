@@ -1,5 +1,5 @@
 import Breakline from "@/components/ui/breakline";
-import Copyright from "../../../components/ui/copyright";
+import Copyright from "../ui/copyright";
 import Menu from "./menu";
 import ProfileHeader from "./profile-header";
 
