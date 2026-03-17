@@ -31,7 +31,6 @@ export default function page() {
             <Introduction />
 
             <div className="my-10">
-
                 <Breakline />
             </div>
             <Skills />

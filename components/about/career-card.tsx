@@ -1,0 +1,173 @@
+"use client";
+
+import Image from "next/image";
+import Link from "next/link";
+import { useState } from "react";
+import { CareerProps } from "@/@types/career";
+import { formatDate } from "@/lib/utils";
+import { Card } from "@/components/ui/card";
+import { ChevronDown } from "lucide-react";
+
+interface CareerCardProps {
+  career: CareerProps;
+}
+
+export default function CareerCard({ career }: CareerCardProps) {
+  const [isExpanded, setIsExpanded] = useState(false);
+  const locationTypeColors: Record<string, string> = {
+    Remote: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
+    Onsite: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
+    Hybrid: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
+  };
+
+  const typeColors: Record<string, string> = {
+    Internship: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
+    "Part-time": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
+    "Full-time": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
+  };
+
+  return (
+    <Card className="transition-all duration-300 overflow-hidden">
+      {/* Main Card Content - Clickable Header */}
+      <button
+        onClick={() => setIsExpanded(!isExpanded)}
+        className="w-full px-4 py-4 text-left hover:bg-muted/50 transition-colors"
+      >
+        <div className="flex items-start justify-between gap-4">
+          {/* Left Section - Logo & Info */}
+          <div className="flex items-start gap-4 flex-1 min-w-0">
+            {career.logo ? (
+              <div className="relative w-16 h-16 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
+                <Image
+                  src={career.logo}
+                  alt={career.company}
+                  width={64}
+                  height={64}
+                  className="object-contain w-full h-full"
+                  priority={false}
+                />
+              </div>
+            ) : (
+              <div className="w-16 h-16 shrink-0 bg-linear-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
+                <span className="text-white font-bold text-lg">
+                  {career.company.charAt(0)}
+                </span>
+              </div>
+            )}
+
+            <div className="flex-1 min-w-0">
+              {/* Position and Company */}
+              <h3 className="text-base font-semibold text-foreground truncate">
+                {career.position}
+              </h3>
+              <Link 
+                href={career.link || "#"} 
+                target="_blank" 
+                rel="noopener noreferrer"
+                onClick={(e) => e.stopPropagation()}
+                className="text-sm text-muted-foreground truncate hover:underline hover:text-foreground transition-colors"
+              >
+                {career.company}
+              </Link>
+
+              {/* Location and Type */}
+              <div className="flex items-center gap-2 mt-2 flex-wrap">
+                <span className="text-xs text-muted-foreground">{career.location}</span>
+                <span className="text-xs text-muted-foreground">·</span>
+                <span className="text-xs text-muted-foreground">{career.industry}</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Expand Icon */}
+          <div className="shrink-0">
+            <ChevronDown
+              className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
+                isExpanded ? "rotate-180" : ""
+              }`}
+            />
+          </div>
+        </div>
+
+        {/* Badges Section */}
+        <div className="flex flex-wrap gap-2 mt-4">
+          <span
+            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${locationTypeColors[career.location_type]}`}
+          >
+            {career.location_type}
+          </span>
+          <span
+            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${typeColors[career.type] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"}`}
+          >
+            {career.type}
+          </span>
+        </div>
+
+        {/* Date Section */}
+        <div className="text-xs text-muted-foreground mt-4 border-t border-foreground/10 pt-3">
+          <span>
+            {formatDate(career.start_date)} → {career.end_date ? formatDate(career.end_date) : "Present"}
+          </span>
+        </div>
+      </button>
+
+      {/* Expandable Dropdown Section */}
+      {isExpanded && (
+        <div className="border-t border-foreground/10 bg-muted/30 animate-in fade-in slide-in-from-top-2 duration-300">
+          <div className="px-4 py-4 space-y-4">
+            {/* Impact Section */}
+            {career.impact && career.impact.length > 0 && (
+              <div>
+                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
+                  📊 Impact
+                </h4>
+                <ul className="space-y-2">
+                  {career.impact.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
+                      <span className="text-blue-500 shrink-0 font-bold">→</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Responsibilities Section */}
+            {career.responsibilities && career.responsibilities.length > 0 && (
+              <div>
+                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
+                  ✓ Key Responsibilities
+                </h4>
+                <ul className="space-y-2">
+                  {career.responsibilities.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
+                      <span className="text-green-500 shrink-0 font-bold">•</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+
+            {/* Learnings Section */}
+            {career.lessons_learned && career.lessons_learned.length > 0 && (
+              <div>
+                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
+                  ⚡ Key Learnings
+                </h4>
+                <ul className="space-y-2">
+                  {career.lessons_learned.map((item, index) => (
+                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
+                      <span className="text-amber-500 shrink-0 font-bold">✨</span>
+                      <span>{item}</span>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            )}
+          </div>
+        </div>
+      )}
+    </Card>
+  );
+}
