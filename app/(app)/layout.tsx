@@ -1,9 +1,10 @@
 import type { Metadata } from "next";
 import { JetBrains_Mono, Inter } from "next/font/google";
 import "../globals.css";
-import Sidebar from "../components/layout/sidebar";
-import { METADATA } from "../constants/metadata";
-import ThemeProviderContext from "../provider/theme-provider";
+import Sidebar from "../../components/layout/sidebar";
+import { METADATA } from "../../constants/metadata";
+import ThemeProviderContext from "../../provider/theme-provider";
+import NextTopLoader from "nextjs-toploader";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -47,10 +48,20 @@ export default function RootLayout({
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
+        <NextTopLoader
+          initialPosition={0.08}
+          crawlSpeed={200}
+          height={3}
+          crawl={true}
+          showSpinner={false}
+          easing="ease"
+          speed={200}
+          shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
+        />
         <ThemeProviderContext>
           <div className="flex max-w-7xl mx-auto py-10">
             <Sidebar />
-            <main className="px-4 ">
+            <main className="px-4 max-w-250 w-full">
               {children}
             </main>
           </div>
