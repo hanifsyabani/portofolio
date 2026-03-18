@@ -18,6 +18,7 @@ export async function generateMetadata(): Promise<Metadata> {
       title: `${METADATA.creator} | Personal Website`,
       description: "Personal website, portfolio, blog",
       url: `${process.env.DOMAIN}`,
+      images: METADATA.profile,
       siteName: METADATA.openGraph.siteName,
       type: "website",
     },
