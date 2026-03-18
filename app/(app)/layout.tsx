@@ -5,6 +5,7 @@ import Sidebar from "../../components/layout/sidebar";
 import { METADATA } from "../../constants/metadata";
 import ThemeProviderContext from "../../provider/theme-provider";
 import NextTopLoader from "nextjs-toploader";
+import QueryProvider from "@/provider/query-provider";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -58,14 +59,16 @@ export default function RootLayout({
           speed={200}
           shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
         />
-        <ThemeProviderContext>
-          <div className="flex max-w-7xl mx-auto py-10">
-            <Sidebar />
-            <main className="px-4 max-w-250 w-full">
-              {children}
-            </main>
-          </div>
-        </ThemeProviderContext>
+        <QueryProvider>
+          <ThemeProviderContext>
+            <div className="flex max-w-7xl mx-auto py-10">
+              <Sidebar />
+              <main className="px-4 max-w-250 w-full">
+                {children}
+              </main>
+            </div>
+          </ThemeProviderContext>
+        </QueryProvider>
       </body>
     </html>
   );

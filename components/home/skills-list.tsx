@@ -38,7 +38,6 @@ export default function Skills() {
                                 title={category.name}
                                 icon={category.icon}
                                 description={category.description}
-                                proficiency={category.proficiency}
                                 color={category.color}
                             />
                         </div>

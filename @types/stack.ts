@@ -1,4 +1,4 @@
-export interface SkillCategory {
+export type SkillCategory = {
     color: string;
     name: string;
     icon: React.ReactNode;
