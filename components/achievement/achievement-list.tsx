@@ -1,22 +1,18 @@
 'use client'
 
-import { useQuery } from "@tanstack/react-query";
 import Breakline from "../ui/breakline";
 import SectionHeading from "../ui/section-heading";
 import SectionSubHeading from "../ui/section-sub-heading";
 import { MdEmojiEvents } from "react-icons/md";
-import { GetAllAchievement } from "@/service/achievement";
 import AchievementCard from "./achievement-card";
-import { AchievementItem } from "@/@types/achievement";
-import Loader from "../ui/loader";
+import { Achievement } from "@/@types/sanity.types";
 
-export default function AchievementList() {
+interface AchievementListProps {
+    achievementsData: Achievement[]
+}
 
-    const { data: dataAchievements, isLoading: isLoadingAchievements } = useQuery({
-        queryKey: ["achievements"],
-        queryFn: () => GetAllAchievement()
-    })
-    if (isLoadingAchievements) <Loader/>
+export default function AchievementList({ achievementsData }: AchievementListProps) {
+console.log(achievementsData)
     return (
         <section>
             <SectionHeading title="Pencapaian" icon={<MdEmojiEvents />} />
@@ -24,11 +20,13 @@ export default function AchievementList() {
                 Beberapa pencapaian yang pernah saya raih selama perjalanan karir saya.
             </SectionSubHeading>
 
-            <Breakline />
+            <div className="my-10">
+                <Breakline />
+            </div>
 
-            {dataAchievements?.length > 0 ? (
+            {achievementsData?.length > 0 ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {dataAchievements.map((achievement : AchievementItem) => (
+                    {achievementsData.map((achievement: Achievement) => (
                         <AchievementCard
                             key={achievement.name}
                             {...achievement}

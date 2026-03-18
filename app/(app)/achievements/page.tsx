@@ -1,7 +1,11 @@
+import { Achievement } from "@/@types/sanity.types";
 import AchievementList from "@/components/achievement/achievement-list";
 import Container from "@/components/ui/container-custom";
 import { METADATA } from "@/constants/metadata";
+import { client } from "@/sanity/client";
+import { allAchievementQuery } from "@/sanity/queries";
 import { Metadata } from "next";
+
 
 export async function generateMetadata(): Promise<Metadata> {
     return {
@@ -10,10 +14,20 @@ export async function generateMetadata(): Promise<Metadata> {
         alternates: { canonical: `${process.env.DOMAIN}/about` },
     };
 }
-export default function page() {
+
+const options = {
+  next : { revalidate: 30 },
+}
+export default async function page() {
+
+   const achievements = await client.fetch<Achievement[]>(
+    allAchievementQuery,
+    {},
+    options
+  )
   return (
     <Container>
-      <AchievementList/>
+      <AchievementList achievementsData={achievements}/>
     </Container>
   )
 }
