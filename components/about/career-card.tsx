@@ -17,13 +17,11 @@ export default function CareerCard({ career }: CareerCardProps) {
 
   return (
     <Card className="transition-all duration-300 overflow-hidden">
-      {/* Main Card Content - Clickable Header */}
       <button
         onClick={() => setIsExpanded(!isExpanded)}
         className="w-full px-4 py-4 text-left hover:bg-muted/50 transition-colors"
       >
         <div className="flex items-start justify-between gap-4">
-          {/* Left Section - Logo & Info */}
           <div className="flex items-start gap-4 flex-1 min-w-0">
             {career.logo ? (
               <div className="relative w-16 h-16 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
@@ -45,7 +43,6 @@ export default function CareerCard({ career }: CareerCardProps) {
             )}
 
             <div className="flex-1 min-w-0">
-              {/* Position and Company */}
               <h3 className="text-base font-semibold text-foreground truncate">
                 {career.position}
               </h3>
@@ -59,7 +56,6 @@ export default function CareerCard({ career }: CareerCardProps) {
                 {career.company}
               </Link>
 
-              {/* Location and Type */}
               <div className="flex items-center gap-2 mt-2 flex-wrap">
                 <span className="text-xs text-muted-foreground">{career.location}</span>
                 <span className="text-xs text-muted-foreground">·</span>
@@ -68,7 +64,6 @@ export default function CareerCard({ career }: CareerCardProps) {
             </div>
           </div>
 
-          {/* Expand Icon */}
           <div className="shrink-0">
             <ChevronDown
               className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
@@ -78,7 +73,6 @@ export default function CareerCard({ career }: CareerCardProps) {
           </div>
         </div>
 
-        {/* Badges Section */}
         <div className="flex flex-wrap gap-2 mt-4">
           <span
             className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium `}
@@ -92,7 +86,6 @@ export default function CareerCard({ career }: CareerCardProps) {
           </span>
         </div>
 
-        {/* Date Section */}
         <div className="text-xs text-muted-foreground mt-4 border-t border-foreground/10 pt-3">
           <span>
             {formatDate(career.startDate as string)} → {career.endDate ? formatDate(career.endDate) : "Present"}
@@ -100,7 +93,6 @@ export default function CareerCard({ career }: CareerCardProps) {
         </div>
       </button>
 
-      {/* Expandable Dropdown Section */}
       {isExpanded && (
         <div className="border-t border-foreground/10 bg-muted/30 animate-in fade-in slide-in-from-top-2 duration-300">
           <div className="px-4 py-4 space-y-4">
@@ -121,7 +113,6 @@ export default function CareerCard({ career }: CareerCardProps) {
               </div>
             )}
 
-            {/* Responsibilities Section */}
             {career.responsibilities && career.responsibilities.length > 0 && (
               <div>
                 <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
@@ -138,7 +129,6 @@ export default function CareerCard({ career }: CareerCardProps) {
               </div>
             )}
 
-            {/* Learnings Section */}
             {career.lessonsLearned && career.lessonsLearned.length > 0 && (
               <div>
                 <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
