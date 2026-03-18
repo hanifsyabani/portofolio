@@ -7,8 +7,7 @@ interface SkillCardProps {
   title: string;
   icon: React.ReactNode;
   description?: string;
-  proficiency?: number; // 0-100
-  color?: string; // tailwind color class
+  color?: string; 
 }
 
 export default function SkillCard({
@@ -43,8 +42,6 @@ export default function SkillCard({
             {description}
           </p>
         )}
-
-       
       </div>
 
       <div className={`absolute inset-0 rounded-xl bg-linear-to-br ${color} opacity-0 p-0.5 transition-opacity duration-300 group-hover:opacity-20 pointer-events-none`} />

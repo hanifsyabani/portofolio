@@ -13,15 +13,6 @@ const eslintConfig = defineConfig([
     "build/**",
     "next-env.d.ts",
   ]),
-
-  {
-    rules: {
-      // Disable the rule that disallows using `console` statements.
-      "no-console": "off",
-      // unused variables are common in Next.js projects, especially when using TypeScript.
-      "@typescript-eslint/no-unused-vars": "error",
-    }
-  }
 ]);
 
 export default eslintConfig;

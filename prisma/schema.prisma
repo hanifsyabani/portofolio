@@ -1,0 +1,73 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+// Get a free hosted Postgres database in seconds: `npx create-db`
+
+generator client {
+  provider = "prisma-client"
+  output   = "../generated/prisma"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+
+
+enum LocationType {
+  Onsite
+  Remote
+  Hybrid
+}
+
+enum EmploymentType {
+  Contract
+  FullTime
+  PartTime
+  Internship
+}
+
+model Career {
+  id Int @id @default(autoincrement())
+
+  position     String
+  company      String
+  logo         String
+  location     String
+  locationType LocationType   @map("location_type")
+  type         EmploymentType @map("employment_type")
+  startDate    String         @map("start_date")
+  endDate      String         @map("end_date")
+  industry     String
+  link         String
+
+  responsibilities String[]
+  lessonsLearned   String[] @map("lessons_learned")
+  impact           String[]
+
+  isShow Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Achievement {
+  id Int @id @default(autoincrement())
+
+  credentialId        String? @map("credential_id")
+  slug                String?
+  name                String
+  issuingOrganization String  @map("issuing_organization")
+  type                String
+  category            String
+  urlCredential       String? @map("url_credential")
+
+  issueDate      String  @map("issue_date")
+  expirationDate String? @map("expiration_date")
+
+  image  String
+  isShow Boolean? @default(true) @map("is_show")
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}

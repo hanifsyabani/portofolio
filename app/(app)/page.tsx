@@ -1,5 +1,5 @@
 import Introduction from "@/components/home/introduction";
-import Skills from "@/components/home/skills";
+import Skills from "@/components/home/skills-list";
 import Breakline from "@/components/ui/breakline";
 import Container from "@/components/ui/container-custom";
 import { METADATA } from "@/constants/metadata";

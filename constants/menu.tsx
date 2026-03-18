@@ -32,14 +32,6 @@ export const MENU_ITEMS: MenuItemProps[] = [
     eventName: "Pages: About",
   },
   {
-    title: "Contents",
-    href: "/contents",
-    icon: <HiCollection size={iconSize} />,
-    isShow: true,
-    isExternal: false,
-    eventName: "Pages: Contents",
-  },
-  {
     title: "Achievements",
     href: "/achievements",
     icon: <HiTrophy size={iconSize} />,

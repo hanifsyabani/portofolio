@@ -1,4 +1,4 @@
-export interface CareerProps {
+export type CareerProps = {
   position: string;
   company: string;
   logo: string | null;
