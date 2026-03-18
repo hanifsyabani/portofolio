@@ -12,7 +12,6 @@ interface AchievementListProps {
 }
 
 export default function AchievementList({ achievementsData }: AchievementListProps) {
-console.log(achievementsData)
     return (
         <section>
             <SectionHeading title="Pencapaian" icon={<MdEmojiEvents />} />
