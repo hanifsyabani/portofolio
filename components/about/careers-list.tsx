@@ -6,9 +6,14 @@ import CareerCard from "./career-card";
 import SectionHeading from "../ui/section-heading";
 import SectionSubHeading from "../ui/section-sub-heading";
 import { MdWorkHistory } from "react-icons/md";
+import { Career } from "@/@types/sanity.types";
 
-export default function Careers() {
-  const filteredCareers = CAREERS.filter((career) => career.isShow !== false);
+interface CareerListProps {
+  careerData  :Career[]
+}
+
+export default function Careers({careerData}: CareerListProps) {
+  const filteredCareers = careerData.filter((career) => career.isShow !== false);
 
   return (
     <section className="w-full">

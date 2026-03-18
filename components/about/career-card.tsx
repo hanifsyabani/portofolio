@@ -3,28 +3,17 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import { CareerProps } from "@/@types/career";
-import { formatDate } from "@/lib/utils";
+import { formatDate, urlForImage } from "@/lib/utils";
 import { Card } from "@/components/ui/card";
 import { ChevronDown } from "lucide-react";
+import { Career } from "@/@types/sanity.types";
 
 interface CareerCardProps {
-  career: CareerProps;
+  career: Career;
 }
 
 export default function CareerCard({ career }: CareerCardProps) {
   const [isExpanded, setIsExpanded] = useState(false);
-  const locationTypeColors: Record<string, string> = {
-    Remote: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-    Onsite: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    Hybrid: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-  };
-
-  const typeColors: Record<string, string> = {
-    Internship: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-    "Part-time": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-    "Full-time": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
-  };
 
   return (
     <Card className="transition-all duration-300 overflow-hidden">
@@ -39,8 +28,8 @@ export default function CareerCard({ career }: CareerCardProps) {
             {career.logo ? (
               <div className="relative w-16 h-16 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
                 <Image
-                  src={career.logo}
-                  alt={career.company}
+                  src={urlForImage(career.logo)?.url() as string}
+                  alt={career.company || "company"}
                   width={64}
                   height={64}
                   className="object-contain w-full h-full"
@@ -50,7 +39,7 @@ export default function CareerCard({ career }: CareerCardProps) {
             ) : (
               <div className="w-16 h-16 shrink-0 bg-linear-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
                 <span className="text-white font-bold text-lg">
-                  {career.company.charAt(0)}
+                  {career.company}
                 </span>
               </div>
             )}
@@ -92,12 +81,12 @@ export default function CareerCard({ career }: CareerCardProps) {
         {/* Badges Section */}
         <div className="flex flex-wrap gap-2 mt-4">
           <span
-            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${locationTypeColors[career.location_type]}`}
+            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium `}
           >
-            {career.location_type}
+            {career.locationType}
           </span>
           <span
-            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${typeColors[career.type] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"}`}
+            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200`}
           >
             {career.type}
           </span>
@@ -106,7 +95,7 @@ export default function CareerCard({ career }: CareerCardProps) {
         {/* Date Section */}
         <div className="text-xs text-muted-foreground mt-4 border-t border-foreground/10 pt-3">
           <span>
-            {formatDate(career.start_date)} → {career.end_date ? formatDate(career.end_date) : "Present"}
+            {formatDate(career.startDate as string)} → {career.endDate ? formatDate(career.endDate) : "Present"}
           </span>
         </div>
       </button>
@@ -150,13 +139,13 @@ export default function CareerCard({ career }: CareerCardProps) {
             )}
 
             {/* Learnings Section */}
-            {career.lessons_learned && career.lessons_learned.length > 0 && (
+            {career.lessonsLearned && career.lessonsLearned.length > 0 && (
               <div>
                 <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
                   ⚡ Key Learnings
                 </h4>
                 <ul className="space-y-2">
-                  {career.lessons_learned.map((item, index) => (
+                  {career.lessonsLearned.map((item, index) => (
                     <li key={index} className="text-sm text-muted-foreground flex gap-3">
                       <span className="text-amber-500 shrink-0 font-bold">✨</span>
                       <span>{item}</span>
