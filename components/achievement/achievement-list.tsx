@@ -40,3 +40,4 @@ export default function AchievementList({ achievementsData }: AchievementListPro
         </section>
     );
 }
+

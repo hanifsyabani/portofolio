@@ -1,173 +1,166 @@
 "use client";
 
+import React, { useMemo } from "react";
 import Image from "next/image";
+import {
+  ClipboardList,
+  Lightbulb,
+  Zap,
+  CheckCircle2,
+  MapPin,
+  Calendar,
+  ChevronDown,
+} from "lucide-react";
+import { formatDuration, urlForImage } from "@/lib/utils";
+import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
+import { Career } from "@/@types/sanity.types";
 import Link from "next/link";
-import { useState } from "react";
-import { CareerProps } from "@/@types/career";
-import { formatDate } from "@/lib/utils";
-import { Card } from "@/components/ui/card";
-import { ChevronDown } from "lucide-react";
 
-interface CareerCardProps {
-  career: CareerProps;
+
+function BulletItem({ text }: { text: string }) {
+  return (
+    <li className="flex items-start gap-2.5 group/item">
+      <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue-400/80" />
+      <span className="text-sm leading-relaxed text-neutral-400 group-hover/item:text-neutral-300 transition-colors duration-200">
+        {text}
+      </span>
+    </li>
+  );
 }
 
-export default function CareerCard({ career }: CareerCardProps) {
-  const [isExpanded, setIsExpanded] = useState(false);
-  const locationTypeColors: Record<string, string> = {
-    Remote: "bg-blue-100 text-blue-800 dark:bg-blue-900 dark:text-blue-200",
-    Onsite: "bg-green-100 text-green-800 dark:bg-green-900 dark:text-green-200",
-    Hybrid: "bg-purple-100 text-purple-800 dark:bg-purple-900 dark:text-purple-200",
-  };
+interface SectionBlockProps {
+  icon: React.ReactNode;
+  title: string;
+  items: string[];
+}
 
-  const typeColors: Record<string, string> = {
-    Internship: "bg-orange-100 text-orange-800 dark:bg-orange-900 dark:text-orange-200",
-    "Part-time": "bg-indigo-100 text-indigo-800 dark:bg-indigo-900 dark:text-indigo-200",
-    "Full-time": "bg-cyan-100 text-cyan-800 dark:bg-cyan-900 dark:text-cyan-200",
-  };
+function SectionBlock({ icon, title, items }: SectionBlockProps) {
+  return (
+    <div className="space-y-3">
+      <div className="flex items-center gap-2">
+        <span className="text-blue-400">{icon}</span>
+        <h4 className="text-sm font-semibold uppercase tracking-wider text-blue-400">
+          {title}
+        </h4>
+      </div>
+      <ul className="space-y-2.5 pl-0.5">
+        {items.map((item, i) => (
+          <BulletItem key={i} text={item} />
+        ))}
+      </ul>
+    </div>
+  );
+}
+
+export default function CareerCard({ career }: { career: Career }) {
+
+  const duration = useMemo(
+    () => formatDuration(career.startDate || "", career.endDate || ""),
+    [career.startDate, career.endDate]
+  );
 
   return (
-    <Card className="transition-all duration-300 overflow-hidden">
-      {/* Main Card Content - Clickable Header */}
-      <button
-        onClick={() => setIsExpanded(!isExpanded)}
-        className="w-full px-4 py-4 text-left hover:bg-muted/50 transition-colors"
-      >
-        <div className="flex items-start justify-between gap-4">
-          {/* Left Section - Logo & Info */}
-          <div className="flex items-start gap-4 flex-1 min-w-0">
-            {career.logo ? (
-              <div className="relative w-16 h-16 shrink-0 bg-gray-100 dark:bg-gray-800 rounded-lg overflow-hidden flex items-center justify-center">
-                <Image
-                  src={career.logo}
-                  alt={career.company}
-                  width={64}
-                  height={64}
-                  className="object-contain w-full h-full"
-                  priority={false}
-                />
-              </div>
-            ) : (
-              <div className="w-16 h-16 shrink-0 bg-linear-to-br from-blue-400 to-blue-600 rounded-lg flex items-center justify-center">
-                <span className="text-white font-bold text-lg">
-                  {career.company.charAt(0)}
-                </span>
-              </div>
-            )}
+    <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-6 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(251,191,36,0.08)] hover:translate-y-[-2px] md:p-8">
 
-            <div className="flex-1 min-w-0">
-              {/* Position and Company */}
-              <h3 className="text-base font-semibold text-foreground truncate">
+      <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
+        {career.logo && (
+          <div className="h-14 w-14 shrink-0 overflow-hidden rounded-xl border border-white/10 bg-neutral-800/60 p-1">
+            <Image
+              src={urlForImage(career.logo)?.url() as string}
+              alt={career.company || ""}
+              width={56}
+              height={56}
+              className="h-full w-full rounded-lg object-cover"
+            />
+          </div>
+        )}
+
+        <div className="flex-1 min-w-0">
+          <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
+            <div className="min-w-0">
+              <h3 className="text-lg font-bold text-neutral-100 leading-snug">
                 {career.position}
               </h3>
-              <Link 
-                href={career.link || "#"} 
-                target="_blank" 
-                rel="noopener noreferrer"
-                onClick={(e) => e.stopPropagation()}
-                className="text-sm text-muted-foreground truncate hover:underline hover:text-foreground transition-colors"
-              >
-                {career.company}
-              </Link>
-
-              {/* Location and Type */}
-              <div className="flex items-center gap-2 mt-2 flex-wrap">
-                <span className="text-xs text-muted-foreground">{career.location}</span>
-                <span className="text-xs text-muted-foreground">·</span>
-                <span className="text-xs text-muted-foreground">{career.industry}</span>
+              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-400">
+                {career.link ? (
+                  <Link
+                    href={career.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="inline-flex items-center gap-1 text-neutral-300 hover:text-blue-400 transition-colors duration-200"
+                  >
+                    {career.company}
+                  </Link>
+                ) : (
+                  <span className="text-neutral-300">{career.company}</span>
+                )}
+                <span className="text-neutral-600">·</span>
+                <span className="inline-flex items-center gap-1">
+                  <MapPin className="h-3 w-3" />
+                  {career.location}
+                </span>
               </div>
             </div>
           </div>
 
-          {/* Expand Icon */}
-          <div className="shrink-0">
-            <ChevronDown
-              className={`w-5 h-5 text-muted-foreground transition-transform duration-300 ${
-                isExpanded ? "rotate-180" : ""
-              }`}
-            />
+          <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
+            <span className="inline-flex items-center gap-1.5 text-neutral-400">
+              <Calendar className="h-3.5 w-3.5" />
+              {duration}
+            </span>
+            <span className="rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium text-blue-400">
+              {career.type}
+            </span>
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-neutral-400">
+              {career.locationType}
+            </span>
+            {career.industry && (
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-neutral-400">
+                {career.industry}
+              </span>
+            )}
           </div>
         </div>
-
-        {/* Badges Section */}
-        <div className="flex flex-wrap gap-2 mt-4">
-          <span
-            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${locationTypeColors[career.location_type]}`}
-          >
-            {career.location_type}
-          </span>
-          <span
-            className={`inline-flex items-center px-3 py-1 rounded-full text-xs font-medium ${typeColors[career.type] || "bg-gray-100 text-gray-800 dark:bg-gray-800 dark:text-gray-200"}`}
-          >
-            {career.type}
-          </span>
-        </div>
-
-        {/* Date Section */}
-        <div className="text-xs text-muted-foreground mt-4 border-t border-foreground/10 pt-3">
-          <span>
-            {formatDate(career.start_date)} → {career.end_date ? formatDate(career.end_date) : "Present"}
-          </span>
-        </div>
-      </button>
-
-      {/* Expandable Dropdown Section */}
-      {isExpanded && (
-        <div className="border-t border-foreground/10 bg-muted/30 animate-in fade-in slide-in-from-top-2 duration-300">
-          <div className="px-4 py-4 space-y-4">
-            {/* Impact Section */}
-            {career.impact && career.impact.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
-                  📊 Impact
-                </h4>
-                <ul className="space-y-2">
-                  {career.impact.map((item, index) => (
-                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-blue-500 shrink-0 font-bold">→</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
-
-            {/* Responsibilities Section */}
+      </div>
+      <Collapsible>
+        <CollapsibleTrigger>
+          <div className="text-xs text-neutral-500 flex gap-2 items-center mt-5 hover:underline cursor-pointer">
+            <ChevronDown /> Lihat Detail
+          </div>
+        </CollapsibleTrigger>
+        <CollapsibleContent className="mt-2">
+          <div className="relative z-10 space-y-6">
             {career.responsibilities && career.responsibilities.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
-                  ✓ Key Responsibilities
-                </h4>
-                <ul className="space-y-2">
-                  {career.responsibilities.map((item, index) => (
-                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-green-500 shrink-0 font-bold">•</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
+              <SectionBlock
+                icon={<ClipboardList className="h-4 w-4" />}
+                title="Responsibilities"
+                items={career.responsibilities}
+              />
             )}
 
-            {/* Learnings Section */}
-            {career.lessons_learned && career.lessons_learned.length > 0 && (
-              <div>
-                <h4 className="font-semibold text-foreground mb-3 text-sm uppercase tracking-wide">
-                  ⚡ Key Learnings
-                </h4>
-                <ul className="space-y-2">
-                  {career.lessons_learned.map((item, index) => (
-                    <li key={index} className="text-sm text-muted-foreground flex gap-3">
-                      <span className="text-amber-500 shrink-0 font-bold">✨</span>
-                      <span>{item}</span>
-                    </li>
-                  ))}
-                </ul>
-              </div>
-            )}
+            {((career.lessonsLearned && career.lessonsLearned.length > 0) ||
+              (career.impact && career.impact.length > 0)) && (
+                <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
+                  {career.lessonsLearned && career.lessonsLearned.length > 0 && (
+                    <SectionBlock
+                      icon={<Lightbulb className="h-4 w-4" />}
+                      title="What I Learned"
+                      items={career.lessonsLearned}
+                    />
+                  )}
+                  {career.impact && career.impact.length > 0 && (
+                    <SectionBlock
+                      icon={<Zap className="h-4 w-4" />}
+                      title="Impact"
+                      items={career.impact}
+                    />
+                  )}
+                </div>
+              )}
           </div>
-        </div>
-      )}
-    </Card>
+        </CollapsibleContent>
+      </Collapsible>
+    </article>
+
   );
 }
