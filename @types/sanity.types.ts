@@ -22,6 +22,69 @@ export type SanityImageAssetReference = {
   [internalGroqTypeReferenceTo]?: "sanity.imageAsset";
 };
 
+export type Project = {
+  _id: string;
+  _type: "project";
+  _createdAt: string;
+  _updatedAt: string;
+  _rev: string;
+  title?: string;
+  slug?: Slug;
+  description?: string;
+  image?: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  };
+  link_demo?: string;
+  link_github?: string;
+  stacks?: Array<string>;
+  content?: Array<{
+    children?: Array<{
+      marks?: Array<string>;
+      text?: string;
+      _type: "span";
+      _key: string;
+    }>;
+    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+    listItem?: "bullet" | "number";
+    markDefs?: Array<{
+      href?: string;
+      _type: "link";
+      _key: string;
+    }>;
+    level?: number;
+    _type: "block";
+    _key: string;
+  }>;
+  is_show?: boolean;
+  is_featured?: boolean;
+};
+
+export type SanityImageCrop = {
+  _type: "sanity.imageCrop";
+  top?: number;
+  bottom?: number;
+  left?: number;
+  right?: number;
+};
+
+export type SanityImageHotspot = {
+  _type: "sanity.imageHotspot";
+  x?: number;
+  y?: number;
+  height?: number;
+  width?: number;
+};
+
+export type Slug = {
+  _type: "slug";
+  current?: string;
+  source?: string;
+};
+
 export type Career = {
   _id: string;
   _type: "career";
@@ -50,22 +113,6 @@ export type Career = {
   isShow?: boolean;
 };
 
-export type SanityImageCrop = {
-  _type: "sanity.imageCrop";
-  top?: number;
-  bottom?: number;
-  left?: number;
-  right?: number;
-};
-
-export type SanityImageHotspot = {
-  _type: "sanity.imageHotspot";
-  x?: number;
-  y?: number;
-  height?: number;
-  width?: number;
-};
-
 export type Achievement = {
   _id: string;
   _type: "achievement";
@@ -89,12 +136,6 @@ export type Achievement = {
     _type: "image";
   };
   isShow?: boolean;
-};
-
-export type Slug = {
-  _type: "slug";
-  current?: string;
-  source?: string;
 };
 
 export type SanityImagePaletteSwatch = {
@@ -196,11 +237,12 @@ export type Geopoint = {
 
 export type AllSanitySchemaTypes =
   | SanityImageAssetReference
-  | Career
+  | Project
   | SanityImageCrop
   | SanityImageHotspot
-  | Achievement
   | Slug
+  | Career
+  | Achievement
   | SanityImagePaletteSwatch
   | SanityImagePalette
   | SanityImageDimensions
@@ -209,3 +251,124 @@ export type AllSanitySchemaTypes =
   | SanityAssetSourceData
   | SanityImageAsset
   | Geopoint;
+
+// Source: ../app/sanity/queries.ts
+// Variable: allAchievementQuery
+// Query: *[_type == "achievement" && isShow == true]{    _id,    name,    slug,    credentialId,    issuingOrganization,    type,    category,    urlCredential,    issueDate,    expirationDate,    image  } | order(issueDate desc)
+export type AllAchievementQueryResult = Array<{
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  credentialId: string | null;
+  issuingOrganization: string | null;
+  type: "award" | "certificate" | "competition" | null;
+  category: "competition" | "education" | "others" | "technology" | null;
+  urlCredential: string | null;
+  issueDate: string | null;
+  expirationDate: string | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+}>;
+
+// Source: ../app/sanity/queries.ts
+// Variable: achievementBySlugQuery
+// Query: *[_type == "achievement" && slug.current == $slug][0]{    _id,    name,    slug,    credentialId,    issuingOrganization,    type,    category,    urlCredential,    issueDate,    expirationDate,    image  }
+export type AchievementBySlugQueryResult = {
+  _id: string;
+  name: string | null;
+  slug: Slug | null;
+  credentialId: string | null;
+  issuingOrganization: string | null;
+  type: "award" | "certificate" | "competition" | null;
+  category: "competition" | "education" | "others" | "technology" | null;
+  urlCredential: string | null;
+  issueDate: string | null;
+  expirationDate: string | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+} | null;
+
+// Source: ../app/sanity/queries.ts
+// Variable: allCareerQuery
+// Query: *[_type == "career" && isShow == true]{    _id,    position,    company,    logo,    location,    locationType,    type,    startDate,    endDate,    industry,    link,    responsibilities,    lessonsLearned,    impact  } | order(startDate desc)
+export type AllCareerQueryResult = Array<{
+  _id: string;
+  position: string | null;
+  company: string | null;
+  logo: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  location: string | null;
+  locationType: "hybrid" | "onsite" | "remote" | null;
+  type:
+    | "contract"
+    | "freelance"
+    | "full-time"
+    | "internship"
+    | "part-time"
+    | null;
+  startDate: string | null;
+  endDate: string | null;
+  industry: string | null;
+  link: string | null;
+  responsibilities: Array<string> | null;
+  lessonsLearned: Array<string> | null;
+  impact: Array<string> | null;
+}>;
+
+// Source: ../app/sanity/queries.ts
+// Variable: careerByIdQuery
+// Query: *[_type == "career" && _id == $id][0]{    _id,    position,    company,    logo,    location,    locationType,    type,    startDate,    endDate,    industry,    link,    responsibilities,    lessonsLearned,    impact  }
+export type CareerByIdQueryResult = {
+  _id: string;
+  position: string | null;
+  company: string | null;
+  logo: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  location: string | null;
+  locationType: "hybrid" | "onsite" | "remote" | null;
+  type:
+    | "contract"
+    | "freelance"
+    | "full-time"
+    | "internship"
+    | "part-time"
+    | null;
+  startDate: string | null;
+  endDate: string | null;
+  industry: string | null;
+  link: string | null;
+  responsibilities: Array<string> | null;
+  lessonsLearned: Array<string> | null;
+  impact: Array<string> | null;
+} | null;
+
+// Query TypeMap
+import "@sanity/client";
+declare module "@sanity/client" {
+  interface SanityQueries {
+    '\n  *[_type == "achievement" && isShow == true]{\n    _id,\n    name,\n    slug,\n    credentialId,\n    issuingOrganization,\n    type,\n    category,\n    urlCredential,\n    issueDate,\n    expirationDate,\n    image\n  } | order(issueDate desc)\n': AllAchievementQueryResult;
+    '\n  *[_type == "achievement" && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    credentialId,\n    issuingOrganization,\n    type,\n    category,\n    urlCredential,\n    issueDate,\n    expirationDate,\n    image\n  }\n': AchievementBySlugQueryResult;
+    '\n  *[_type == "career" && isShow == true]{\n    _id,\n    position,\n    company,\n    logo,\n    location,\n    locationType,\n    type,\n    startDate,\n    endDate,\n    industry,\n    link,\n    responsibilities,\n    lessonsLearned,\n    impact\n  } | order(startDate desc)\n': AllCareerQueryResult;
+    '\n  *[_type == "career" && _id == $id][0]{\n    _id,\n    position,\n    company,\n    logo,\n    location,\n    locationType,\n    type,\n    startDate,\n    endDate,\n    industry,\n    link,\n    responsibilities,\n    lessonsLearned,\n    impact\n  }\n': CareerByIdQueryResult;
+  }
+}

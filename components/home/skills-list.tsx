@@ -2,23 +2,7 @@ import { BiCodeAlt } from "react-icons/bi";
 import SectionHeading from "../ui/section-heading";
 import SectionSubHeading from "../ui/section-sub-heading";
 import SkillCard from "./skill-card";
-import {
-    SiReact,
-    SiTypescript,
-    SiNextdotjs,
-    SiTailwindcss,
-    SiPostgresql,
-    SiMongodb,
-    SiGit,
-    SiDocker,
-    SiGraphql,
-    SiJavascript,
-    SiNodedotjs,
-    SiPrisma,
-} from "react-icons/si";
 import { skillCategories } from "@/constants/stacks";
-
-
 
 
 export default function Skills() {
@@ -35,9 +19,9 @@ export default function Skills() {
                         <div key={category.name}>
                             <SkillCard
                                 key={category.name}
-                                title={category.name}
+                                title={category.name || ""}
                                 icon={category.icon}
-                                description={category.description}
+                                description={category.description || ""}
                                 color={category.color}
                             />
                         </div>

@@ -1,7 +1,14 @@
 export type SkillCategory = {
     color: string;
-    name: string;
+    name?: string;
     icon: React.ReactNode;
-    proficiency: number;
-    description: string;
+    description?: string;
+}
+
+
+export type SkillProps = {
+    [key: string]: SkillCategory & {
+        background: string;
+        isActive: boolean;
+    }
 }

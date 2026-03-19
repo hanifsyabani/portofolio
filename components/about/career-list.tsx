@@ -10,7 +10,7 @@ export default function CareerList({ careerData }: { careerData: Career[] }) {
   return (
     <section className="space-y-6">
       <div>
-        <SectionHeading title="Experience" icon={<BiBriefcase />} />
+        <SectionHeading title="Experience" icon={<BiBriefcase />} className="mb-2" />
         <SectionSubHeading>
           My professional journey and career highlights.
         </SectionSubHeading>
