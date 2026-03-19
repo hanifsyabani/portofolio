@@ -71,3 +71,35 @@ export const careerByIdQuery = defineQuery(`
     impact
   }
 `)
+
+export const allProjectQuery = defineQuery(`
+  *[_type == "project" && is_show == true]{
+    _id,
+    title,
+    slug,
+    description,
+    image,
+    link_demo,
+    link_github,
+    stacks,
+    content,
+    is_show,
+    is_featured
+  } | order(_createdAt desc)
+`)
+
+export const projectBySlugQuery = defineQuery(`
+  *[_type == "project" && slug.current == $slug][0]{
+    _id,
+    title,
+    slug,
+    description,
+    image,
+    link_demo,
+    link_github,
+    stacks,
+    content,
+    is_show,
+    is_featured
+  }
+`)

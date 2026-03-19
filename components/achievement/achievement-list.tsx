@@ -14,7 +14,7 @@ interface AchievementListProps {
 export default function AchievementList({ achievementsData }: AchievementListProps) {
     return (
         <section>
-            <SectionHeading title="Pencapaian" icon={<MdEmojiEvents />} />
+            <SectionHeading title="Pencapaian" icon={<MdEmojiEvents />} className="mb-2"/>
             <SectionSubHeading>
                 Beberapa pencapaian yang pernah saya raih selama perjalanan karir saya.
             </SectionSubHeading>
