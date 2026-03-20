@@ -1,5 +1,6 @@
 import { Career } from "@/@types/sanity.types";
 import CareerList from "@/components/about/career-list";
+import Education from "@/components/about/education";
 import ProfileAbout from "@/components/about/profile-about";
 import Breakline from "@/components/ui/breakline";
 import Container from "@/components/ui/container-custom";
@@ -33,6 +34,10 @@ export default async function page() {
                 <Breakline />
             </div>
             <CareerList careerData={careers} />
+            <div className="my-10">
+                <Breakline />
+            </div>
+            <Education />
         </Container>
     )
 }

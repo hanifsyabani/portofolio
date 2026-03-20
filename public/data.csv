@@ -1,4 +1,0 @@
-id,credential_id,slug,name,issuing_organization,type,category,url_credential,issue_date,expiration_date,image,is_show,createdAt,updatedAt
-1,ABC123,fullstack-cert,Fullstack Web Development,Dicoding,Certification,Technology,https://example.com/cert1,2023-01-01,2026-01-01,cert1.png,true,2026-03-18T09:00:00Z,2026-03-18T09:00:00Z
-2,,ml-cert,Machine Learning Specialization,Coursera,Certification,AI,,2022-06-15,,cert2.png,true,2026-03-18T09:00:00Z,2026-03-18T09:00:00Z
-3,XYZ789,android-dev,Android Developer Expert,Google,Certification,Mobile,https://example.com/cert3,2024-02-10,2027-02-10,cert3.png,true,2026-03-18T09:00:00Z,2026-03-18T09:00:00Z
