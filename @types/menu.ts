@@ -1,6 +1,6 @@
 import { JSX } from "react";
 
-export type MenuItemProps = {
+export interface MenuItemProps {
   title: string;
   href: string;
   icon: JSX.Element;

@@ -6,6 +6,7 @@ import { METADATA } from "../../constants/metadata";
 import ThemeProviderContext from "../../provider/theme-provider";
 import NextTopLoader from "nextjs-toploader";
 import QueryProvider from "@/provider/query-provider";
+import { Toaster } from "sonner";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -62,10 +63,12 @@ export default function RootLayout({
         <QueryProvider>
           <ThemeProviderContext>
             <div className="flex max-w-7xl mx-auto py-10">
+              <Toaster position="top-right" richColors />
               <Sidebar />
               <main className="px-4 max-w-250 w-full">
                 {children}
               </main>
+
             </div>
           </ThemeProviderContext>
         </QueryProvider>
