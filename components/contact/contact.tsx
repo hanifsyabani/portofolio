@@ -17,7 +17,7 @@ export default function Contact() {
 
             <ContactList />
 
-            <div className="my-2">
+            <div className="my-10">
                 <Breakline />
             </div>
 

@@ -1,9 +1,9 @@
+import { prisma } from "@/lib/prisma";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function POST(request: NextRequest) {
   try {
-    const body = await request.json();
-    const { name, email, message } = body;
+    const { name, email, message } = await request.json()
 
     if (!name || !email || !message) {
       return NextResponse.json(
@@ -12,8 +12,13 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // TODO: integrate with email service (e.g. Resend, SendGrid, Nodemailer)
-    console.log("📩 New contact form submission:", { name, email, message });
+    await prisma.contact.create({
+      data: {
+        name,
+        message,
+        email
+      }
+    })
 
     return NextResponse.json(
       { success: true, message: "Message received successfully" },
