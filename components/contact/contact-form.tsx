@@ -48,7 +48,7 @@ export default function ContactForm() {
 
 
   const inputBase =
-    "w-full rounded-xl border border-white/[0.08] bg-white/[0.03] px-4 py-3 text-sm text-neutral-100 placeholder-neutral-600 outline-none transition-all duration-300 focus:border-blue-400/40 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-400/20";
+    "w-full rounded-xl  border border-white/[0.08] bg-white/[0.03] px-3 py-5 text-sm text-neutral-100 placeholder-neutral-600 outline-none transition-all duration-300 focus:border-blue-400/40 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-400/20";
 
   return (
     <div className="space-y-5">
@@ -102,9 +102,9 @@ export default function ContactForm() {
           </Label>
           <Textarea
             id="contact-message"
-            rows={5}
+            rows={8}
             placeholder="Tell me about your project, idea, or just say hi..."
-            className={`${inputBase} resize-none ${errors.message ? "border-red-400/50" : ""}`}
+            className={`${inputBase} h-20 ${errors.message ? "border-red-400/50" : ""}`}
             {...register("message")}
           />
           {errors.message && (

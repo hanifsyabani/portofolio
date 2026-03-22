@@ -60,7 +60,7 @@ export default function CareerCard({ career }: { career: Career }) {
   );
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-6 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(251,191,36,0.08)] hover:translate-y-[-2px] md:p-8">
+    <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-neutral-300 dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-6 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(251,191,36,0.08)] hover:translate-y-[-2px] md:p-8">
 
       <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
         {career.logo && (
