@@ -1,4 +1,4 @@
-export type SkillCategory = {
+export interface SkillCategory {
     color: string;
     name?: string;
     icon: React.ReactNode;
@@ -6,7 +6,7 @@ export type SkillCategory = {
 }
 
 
-export type SkillProps = {
+export interface SkillProps {
     [key: string]: SkillCategory & {
         background: string;
         isActive: boolean;
