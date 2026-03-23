@@ -58,7 +58,6 @@ export default function RootLayout({
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
         />
         <QueryProvider>
           <ThemeProviderContext>
