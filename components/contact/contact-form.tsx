@@ -48,7 +48,7 @@ export default function ContactForm() {
 
 
   const inputBase =
-    "w-full rounded-xl  border border-white/[0.08] bg-white/[0.03] px-3 py-5 text-sm text-neutral-100 placeholder-neutral-600 outline-none transition-all duration-300 focus:border-blue-400/40 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-400/20";
+    "w-full rounded-xl  border dark:border-white/[0.08] bg-white/[0.03] px-3 py-5 text-sm dark:text-neutral-100 text-neutral-900 placeholder-neutral-600 outline-none transition-all duration-300 focus:border-blue-400/40 focus:bg-white/[0.05] focus:ring-1 focus:ring-blue-400/20";
 
   return (
     <div className="space-y-5">
@@ -64,7 +64,7 @@ export default function ContactForm() {
       <form onSubmit={handleSubmit(onSubmit)} className="space-y-4">
         <div className="flex flex-col gap-4 sm:flex-row">
           <div className="flex-1 space-y-1.5">
-            <Label htmlFor="contact-name" className="text-xs font-medium text-neutral-400">
+            <Label htmlFor="contact-name" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
               Name
             </Label>
             <Input
@@ -80,7 +80,7 @@ export default function ContactForm() {
           </div>
 
           <div className="flex-1 space-y-1.5">
-            <Label htmlFor="contact-email" className="text-xs font-medium text-neutral-400">
+            <Label htmlFor="contact-email" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
               Email
             </Label>
             <Input
@@ -97,7 +97,7 @@ export default function ContactForm() {
         </div>
 
         <div className="space-y-1.5">
-          <Label htmlFor="contact-message" className="text-xs font-medium text-neutral-400">
+          <Label htmlFor="contact-message" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
             Message
           </Label>
           <Textarea

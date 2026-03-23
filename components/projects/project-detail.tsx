@@ -16,10 +16,10 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
   const imageUrl = urlForImage(projectData.image)?.url() as string;
 
   return (
-    <section className="mx-auto max-w-3xl">
+    <section>
       <Link
         href="/projects"
-        className="mb-8 inline-flex items-center gap-2 text-sm text-neutral-400 transition-colors duration-300 hover:text-amber-400"
+        className="mb-8 inline-flex items-center gap-2 text-sm dark:text-neutral-400 text-neutral-600 transition-colors duration-300 hover:text-blue-400"
       >
         <ArrowLeft className="h-4 w-4" />
         <span>Back to Projects</span>
@@ -38,7 +38,7 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
       )}
 
       <div className="mb-4 flex items-start gap-3">
-        <h1 className="text-2xl font-bold text-neutral-100 md:text-3xl">
+        <h1 className="text-2xl font-bold dark:text-neutral-100 text-neutral-900 md:text-3xl">
           {projectData.title}
         </h1>
         {projectData.is_featured && (
@@ -50,7 +50,7 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
       </div>
 
       {projectData.description && (
-        <p className="mb-6 text-sm leading-relaxed text-neutral-400">
+        <p className="mb-6 text-sm leading-relaxed dark:text-neutral-400 text-neutral-600">
           {projectData.description}
         </p>
       )}
@@ -97,9 +97,7 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
       </div>
 
       {projectData.content && (
-        <div className="prose prose-invert prose-sm max-w-none prose-headings:text-neutral-200 prose-p:text-neutral-400 prose-p:leading-relaxed prose-a:text-amber-400 prose-a:no-underline hover:prose-a:underline prose-strong:text-neutral-200 prose-ul:text-neutral-400 prose-ol:text-neutral-400 prose-li:marker:text-amber-400/50">
-          <PortableText value={projectData.content} components={portableTextComponents} />
-        </div>
+        <PortableText value={projectData.content} components={portableTextComponents} />
       )}
     </section>
   );

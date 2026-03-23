@@ -22,8 +22,8 @@ export default function Menu() {
                     key={item.title} 
                     className={`flex items-center gap-2 pl-4 py-2 rounded-xl cursor-pointer transition-all ${
                         isActive(item.href)
-                            ? "text-neutral-100 bg-neutral-800"
-                            : "text-neutral-400 hover:text-neutral-100 hover:bg-neutral-600"
+                            ? "dark:text-neutral-100 text-neutral-200 dark:bg-neutral-800 bg-neutral-500"
+                            : "dark:text-neutral-400 text-neutral-600 hover:text-neutral-100 dark:hover:bg-neutral-600 hover:bg-neutral-500"
                     }`}
                 >
                     {item.icon}

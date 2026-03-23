@@ -41,7 +41,7 @@ function DetailRow({
         <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-500">
           {label}
         </p>
-        <div className="mt-0.5 text-sm text-neutral-200">{value}</div>
+        <div className="mt-0.5 text-sm dark:text-neutral-200 text-neutral-600">{value}</div>
       </div>
     </div>
   );
@@ -56,7 +56,7 @@ export default function AchievementDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] bg-neutral-950 p-0 max-w-6xl sm:rounded-2xl">
+      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-neutral-200 p-0 max-w-6xl sm:rounded-2xl">
         <DialogTitle className="sr-only">{achievement.name}</DialogTitle>
 
         <div className="flex flex-col md:flex-row">
@@ -78,19 +78,19 @@ export default function AchievementDetailDialog({
                 </span>
               )}
               {achievement.category && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium capitalize text-neutral-400">
+                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium capitalize dark:text-neutral-400 text-neutral-600">
                   <Tag className="h-3 w-3" />
                   {achievement.category}
                 </span>
               )}
             </div>
 
-            <h2 className="text-lg font-bold leading-snug text-neutral-100">
+            <h2 className="text-lg font-bold leading-snug dark:text-neutral-100 text-neutral-900">
               {achievement.name}
             </h2>
 
             {achievement.issuingOrganization && (
-              <p className="mt-1 text-sm text-neutral-400">
+              <p className="mt-1 text-sm dark:text-neutral-400 text-neutral-600">
                 {achievement.issuingOrganization}
               </p>
             )}
