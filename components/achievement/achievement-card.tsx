@@ -16,7 +16,7 @@ export default function AchievementCard(achievement: Achievement) {
     <>
       <article
         onClick={() => setDialogOpen(true)}
-        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(96,165,250,0.12)] hover:translate-y-[-2px]"
+        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 bg-neutral-100 dark:bg-neutral-900 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(96,165,250,0.12)] hover:translate-y-[-2px]"
       >
         <div className="relative h-48 w-full overflow-hidden bg-neutral-800/40">
           <Image
@@ -32,26 +32,20 @@ export default function AchievementCard(achievement: Achievement) {
           </div>
         </div>
 
-        {/* Content Section */}
         <div className="flex flex-col gap-2.5 p-5">
-          {/* Credential ID */}
           {achievement.credentialId && (
-            <p className="text-[10px] font-medium uppercase tracking-widest text-neutral-500">
+            <p className="text-[10px] font-medium uppercase tracking-widest dark:text-neutral-500 text-neutral-600">
               {achievement.credentialId}
             </p>
           )}
-
-          {/* Name */}
-          <h3 className="line-clamp-2 text-sm font-semibold leading-snug text-neutral-100 transition-colors duration-300 group-hover:text-blue-400">
+          <h3 className="line-clamp-2 text-sm font-semibold leading-snug dark:text-neutral-100 text-neutral-900 transition-colors duration-300 group-hover:text-blue-400">
             {achievement.name}
           </h3>
 
-          {/* Organization */}
-          <p className="text-xs text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
+          <p className="text-xs dark:text-neutral-400 text-neutral-600 transition-colors duration-300 group-hover:text-neutral-300">
             {achievement.issuingOrganization}
           </p>
 
-          {/* Type Badge */}
           <div className="flex flex-wrap gap-2 pt-1">
             {achievement.type && (
               <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">

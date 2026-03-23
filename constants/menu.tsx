@@ -49,7 +49,7 @@ export const MENU_ITEMS: MenuItemProps[] = [
   },
   {
     title: "Chat Room",
-    href: "/chat",
+    href: "/chat-room",
     icon: <HiChatAlt2 size={iconSize} />,
     isShow: true,
     isExternal: false,

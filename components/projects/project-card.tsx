@@ -21,7 +21,7 @@ export default function ProjectCard({ project }: ProjectCardProps) {
     ((project.description?.length ?? 0) > 100 ? "..." : "");
 
   return (
-    <article onClick={() => router.push(`/projects/${project.slug?.current}`)} className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 transition-all duration-500 hover:border-amber-400/20 hover:shadow-[0_8px_40px_-12px_rgba(245,190,60,0.10)] hover:translate-y-[-2px]">
+    <article onClick={() => router.push(`/projects/${project.slug?.current}`)} className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06]  dark:bg-linear-to-br dark:from-neutral-900/60 dark:via-neutral-900/40 dark:to-neutral-950/80 bg-neutral-100 dark:bg-neutral-900 transition-all duration-500 hover:border-amber-400/20 hover:shadow-[0_8px_40px_-12px_rgba(245,190,60,0.10)] hover:translate-y-[-2px]">
       {project.is_featured && (
         <div className="absolute right-0 top-0 z-10 flex items-center gap-1 rounded-bl-xl rounded-tr-2xl bg-blue-400/90 px-3 py-1.5 text-xs font-semibold text-neutral-900 shadow-lg">
           <Pin className="h-3 w-3" />
@@ -50,15 +50,14 @@ export default function ProjectCard({ project }: ProjectCardProps) {
       </div>
 
       <div className="flex flex-col gap-3 p-5">
-        <h3 className="text-sm font-semibold leading-snug text-neutral-100 transition-colors duration-300 group-hover:text-amber-400">
+        <h3 className="text-sm font-semibold leading-snug dark:text-neutral-100 text-neutral-900 transition-colors duration-300 group-hover:text-blue-400">
           {project.title}
         </h3>
 
-        <p className="line-clamp-2 text-xs leading-relaxed text-neutral-400 transition-colors duration-300 group-hover:text-neutral-300">
+        <p className="line-clamp-2 text-xs leading-relaxed dark:text-neutral-400 text-neutral-600 transition-colors duration-300 dark:group-hover:text-neutral-300">
           {trimmedDescription}
         </p>
 
-        {/* Tech Stacks */}
         {project.stacks && project.stacks.length > 0 && (
           <div className="flex flex-wrap gap-4 pt-1">
             {project.stacks.map((stack, index) => {

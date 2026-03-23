@@ -12,7 +12,7 @@ interface EducationCardProps {
 
 export default function EducationCard({ title, image, major, gpa, year, location }: EducationCardProps) {
     return (
-        <Card className="p-4 bg-linear-to-br from-neutral-900 to-neutral-950">
+        <Card className="p-4 bg-linear-to-br dark:from-neutral-900 dark:to-neutral-950 bg-neutral-100 ">
             <div className="flex items-center  gap-4">
                 <div className="w-20 h-20">
                     <Image

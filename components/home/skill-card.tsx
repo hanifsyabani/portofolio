@@ -27,7 +27,7 @@ export default function SkillCard({
           </div>
         </div>
 
-          <h3 className="text-sm text-center font-semibold text-white transition-colors duration-300 group-hover:text-blue-400">
+          <h3 className="text-sm text-center font-semibold text-neutral-900 dark:text-white transition-colors duration-300 group-hover:text-blue-400">
             {title}
           </h3>
 

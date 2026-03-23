@@ -21,7 +21,7 @@ function BulletItem({ text }: { text: string }) {
   return (
     <li className="flex items-start gap-2.5 group/item">
       <CheckCircle2 className="mt-0.5 h-4 w-4 shrink-0 text-blue-400/80" />
-      <span className="text-sm leading-relaxed text-neutral-400 group-hover/item:text-neutral-300 transition-colors duration-200">
+      <span className="text-sm leading-relaxed dark:text-neutral-400 text-neutral-800 dark:group-hover/item:text-neutral-300 transition-colors duration-200">
         {text}
       </span>
     </li>
@@ -60,7 +60,7 @@ export default function CareerCard({ career }: { career: Career }) {
   );
 
   return (
-    <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-6 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(251,191,36,0.08)] hover:translate-y-[-2px] md:p-8">
+    <article className="group relative overflow-hidden rounded-2xl border border-white/[0.06] bg-neutral-100 dark:bg-neutral-900 dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-6 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(251,191,36,0.08)] hover:translate-y-[-2px] md:p-8">
 
       <div className="relative z-10 flex flex-col gap-4 sm:flex-row sm:items-start sm:gap-5">
         {career.logo && (
@@ -78,7 +78,7 @@ export default function CareerCard({ career }: { career: Career }) {
         <div className="flex-1 min-w-0">
           <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
-              <h3 className="text-lg font-bold text-neutral-100 leading-snug">
+              <h3 className="text-lg font-bold dark:text-neutral-100 text-neutral-900 leading-snug">
                 {career.position}
               </h3>
               <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-400">
@@ -87,15 +87,15 @@ export default function CareerCard({ career }: { career: Career }) {
                     href={career.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 text-neutral-300 hover:text-blue-400 transition-colors duration-200"
+                    className="inline-flex items-center gap-1 dark:text-neutral-300 text-neutral-900 hover:text-blue-400 transition-colors duration-200"
                   >
                     {career.company}
                   </Link>
                 ) : (
-                  <span className="text-neutral-300">{career.company}</span>
+                  <span className="dark:text-neutral-300 text-neutral-900">{career.company}</span>
                 )}
                 <span className="text-neutral-600">·</span>
-                <span className="inline-flex items-center gap-1">
+                <span className="inline-flex items-center gap-1 dark:text-neutral-300 text-neutral-900">
                   <MapPin className="h-3 w-3" />
                   {career.location}
                 </span>
@@ -104,18 +104,18 @@ export default function CareerCard({ career }: { career: Career }) {
           </div>
 
           <div className="mt-3 flex flex-wrap items-center gap-2 text-xs">
-            <span className="inline-flex items-center gap-1.5 text-neutral-400">
+            <span className="inline-flex items-center gap-1.5 dark:text-neutral-400 text-neutral-800">
               <Calendar className="h-3.5 w-3.5" />
               {duration}
             </span>
             <span className="rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium text-blue-400">
               {career.type}
             </span>
-            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-neutral-400">
+            <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium dark:text-neutral-400 text-neutral-800">
               {career.locationType}
             </span>
             {career.industry && (
-              <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium text-neutral-400">
+              <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium dark:text-neutral-400 text-neutral-800">
                 {career.industry}
               </span>
             )}

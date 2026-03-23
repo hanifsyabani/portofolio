@@ -2,6 +2,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
 import { VerifiedIcon } from "lucide-react";
+import ThemeToggle from "./theme-toggle";
 
 
 export default function ProfileHeader() {
@@ -36,8 +37,8 @@ export default function ProfileHeader() {
             </div>
 
             <div className="hidden justify-between gap-6 lg:mt-4 lg:flex">
-                {/* <IntlToggle />
-                <ThemeToggle /> */}
+                 {/* <IntlToggle /> */}
+                <ThemeToggle /> 
             </div>
         </div>
     )
