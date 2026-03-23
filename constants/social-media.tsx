@@ -35,7 +35,7 @@ export const SOCIAL_MEDIA: SocialMediaItem[] = [
     title: "GitHub",
     description: "Check out my open-source projects and code contributions.",
     href: "https://github.com/hanifsyabani",
-    icon: <SiGithub size={iconSize} />,
+    icon: <SiGithub size={iconSize} className="dark:text-neutral-300 text-neutral-900" />,
     accentColor: "text-neutral-300",
     hoverBorder: "hover:border-neutral-400/30",
     glowColor: "rgba(163,163,163,0.10)",

@@ -56,7 +56,7 @@ export default function AchievementDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-neutral-200 p-0 max-w-6xl sm:rounded-2xl">
+      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-white p-0 max-w-6xl sm:rounded-2xl">
         <DialogTitle className="sr-only">{achievement.name}</DialogTitle>
 
         <div className="flex flex-col md:flex-row">

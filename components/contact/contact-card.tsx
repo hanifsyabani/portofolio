@@ -16,7 +16,7 @@ export default function ContactCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      className={`group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-white/[0.06] bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-5 transition-all duration-500 hover:translate-y-[-2px] ${hoverBorder}`}
+      className={`group relative flex items-start gap-4 overflow-hidden rounded-2xl border border-white/[0.06] bg-neutral-200 dark:bg-neutral-800 dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 p-5 transition-all duration-500 hover:translate-y-[-2px] ${hoverBorder}`}
       style={{
         // @ts-expect-error css custom property
         "--card-glow": glowColor,
@@ -37,12 +37,12 @@ export default function ContactCard({
 
       <div className="relative z-10 flex min-w-0 flex-1 flex-col gap-1">
         <div className="flex items-center gap-2">
-          <h4 className="text-sm font-semibold text-neutral-100 transition-colors duration-300 group-hover:text-white">
+          <h4 className="text-sm font-semibold dark:text-neutral-100 text-neutral-900 transition-colors duration-300 group-hover:text-neutral-400">
             {title}
           </h4>
-          <ArrowUpRight className="h-3.5 w-3.5 dark:text-neutral-600 text-neutral-100 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-400" />
+          <ArrowUpRight className="h-3.5 w-3.5 dark:text-neutral-600 text-neutral-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-400" />
         </div>
-        <p className="text-xs leading-relaxed dark:text-neutral-500 text-neutral-100 transition-colors duration-300 dark:group-hover:text-neutral-400">
+        <p className="text-xs leading-relaxed dark:text-neutral-500 text-neutral-600 transition-colors duration-300 dark:group-hover:text-neutral-400">
           {description}
         </p>
       </div>
