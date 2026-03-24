@@ -40,6 +40,8 @@ export const metadata: Metadata = {
   },
 };
 
+import AosProvider from "../../provider/aos-provider";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -58,19 +60,20 @@ export default function RootLayout({
           showSpinner={false}
           easing="ease"
           speed={200}
-          shadow="0 0 10px #fbe400,0 0 5px #ffffb8"
         />
         <QueryProvider>
-          <ThemeProviderContext>
-            <div className="flex max-w-7xl mx-auto py-10">
-              <Toaster position="top-right" richColors />
-              <Sidebar />
-              <main className="px-4 max-w-250 w-full">
-                {children}
-              </main>
+          <AosProvider>
+            <ThemeProviderContext>
+              <div className="flex max-w-7xl mx-auto py-10">
+                <Toaster position="top-right" richColors />
+                <Sidebar />
+                <main className="px-4 max-w-250 w-full">
+                  {children}
+                </main>
 
-            </div>
-          </ThemeProviderContext>
+              </div>
+            </ThemeProviderContext>
+          </AosProvider>
         </QueryProvider>
       </body>
     </html>

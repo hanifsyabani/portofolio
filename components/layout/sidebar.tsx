@@ -6,13 +6,15 @@ import ProfileHeader from "./profile-header";
 export default function Sidebar() {
     return (
         <header className="w-1/4">
-            <ProfileHeader />
-            <Breakline />
-            <div className="mt-6">
-                <Menu />
+            <div className="sticky top-10 z-10 flex flex-col transition-all duration-300">
+                <ProfileHeader />
+                <Breakline />
+                <div className="mt-6">
+                    <Menu />
+                </div>
+                <Breakline />
+                <Copyright />
             </div>
-            <Breakline />
-            <Copyright />
         </header>
     )
 }
