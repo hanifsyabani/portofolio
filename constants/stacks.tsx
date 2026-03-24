@@ -246,7 +246,7 @@ export const STACKSPROJECTS: SkillProps = {
   "Next.js": {
     icon: <SiNextdotjs size={iconSize} />,
     background: "bg-neutral-800",
-    color: "text-neutral-50",
+    color: "dark:text-neutral-50",
     isActive: true,
   },
   "Express.js": {

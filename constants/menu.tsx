@@ -7,6 +7,7 @@ import {
   HiFolder,
   HiChatAlt2,
   HiMail,
+  HiChartBar,
 } from "react-icons/hi";
 
 import { HiTrophy } from "react-icons/hi2";
@@ -46,6 +47,14 @@ export const MENU_ITEMS: MenuItemProps[] = [
     isShow: true,
     isExternal: false,
     eventName: "Pages: Projects",
+  },
+  {
+    title: "Statistics",
+    href: "/statistics",
+    icon: <HiChartBar size={iconSize} />,
+    isShow: true,
+    isExternal: false,
+    eventName: "Pages: Statistics",
   },
   {
     title: "Chat Room",
