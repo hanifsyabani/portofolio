@@ -39,7 +39,7 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
       .filter((week) => String(week.firstDay).slice(0, 7) === String(month.firstDay).slice(0, 7))
       .map((item) => item.contributionDays)
       .flat(1);
-    
+
     const getContributionsByMonth = filterContributionDay.reduce(
       (previousValue, currentValue) => previousValue + currentValue.contributionCount,
       0
@@ -50,9 +50,9 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
       contributionsCount: getContributionsByMonth,
     };
   });
-  const contributionColors = colors?.length >= 4 
-    ? colors 
-    : ["#ffffb8", "#ffff8a", "#ffff5c", "#fbe400", "#eab308"];
+  const contributionColors = colors?.length >= 5
+    ? colors
+    : ["#ebedf0", "#9be9a8", "#40c463", "#30a14e", "#216e39"];
 
   return (
     <>
@@ -73,21 +73,22 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
           {weeks.map((week) => (
             <div key={String(week.firstDay)}>
               {week.contributionDays.map((contribution) => {
-                const colorIndex = colors.indexOf(contribution.color);
-                // GitHub usually has 5 colors (0=none, 1-4=intensities). Ref only mapped 4 intensities.
-                // We'll map the custom color if we have one.
-                const customColor = colorIndex !== -1 && colorIndex < contributionColors.length 
-                    ? contributionColors[colorIndex] 
-                    : contribution.color;
-
-                const backgroundColor = contribution.contributionCount > 0 ? customColor : null;
+                
+                const getColorByCount = (count: number) => {
+                  if (count === 0) return "#454545ff";
+                  if (count < 3) return "#9be9a8";
+                  if (count < 6) return "#40c463";
+                  if (count < 10) return "#30a14e";
+                  return "#216e39";
+                };
+                const backgroundColor = getColorByCount(contribution.contributionCount)
 
                 const getRandomDelayAnimate = Math.random() * week.contributionDays.length * 0.15;
 
                 return (
                   <span
                     key={contribution.date}
-                    className="my-[2px] block h-[12px] w-[12px] rounded-sm bg-neutral-300 dark:bg-neutral-800 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
+                    className="my-[2px] block h-[12px] w-[12px] rounded-xs bg-neutral-300 dark:bg-neutral-800 transition-all duration-300 animate-in fade-in slide-in-from-bottom-2"
                     style={{
                       ...(backgroundColor ? { backgroundColor } : {}),
                       animationDelay: `${getRandomDelayAnimate}s`,

@@ -1,8 +1,8 @@
 import Image from "next/image";
 import Link from "next/link";
 import { cn } from "@/lib/utils";
-import { VerifiedIcon } from "lucide-react";
 import ThemeToggle from "./theme-toggle";
+import { MdVerified } from "react-icons/md";
 
 
 export default function ProfileHeader() {
@@ -28,7 +28,7 @@ export default function ProfileHeader() {
                 </Link>
 
                 {/* <Tooltip title="Verified"> */}
-                    <VerifiedIcon size={18} className="text-blue-400" />
+                    <MdVerified size={18} className="text-blue-400" />
                 {/* </Tooltip> */}
             </div>
 

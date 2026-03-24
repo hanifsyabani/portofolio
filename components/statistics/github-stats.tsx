@@ -1,6 +1,5 @@
 "use client";
 
-import { GITHUB_ACCOUNTS } from "@/constants/github";
 import { useQuery } from "@tanstack/react-query";
 import { GetStatsGithub } from "@/service/github";
 import Loader from "../ui/loader";
@@ -10,10 +9,11 @@ import SectionSubHeading from "../ui/section-sub-heading";
 import { SiGithub } from "react-icons/si";
 import Breakline from "../ui/breakline";
 import ContributionCalendar from "./contribution-calendar";
+import GithubStatsCard from "./github-stats-card";
 
 export default function GithubStats() {
 
-  const { data, isLoading, isError } = useQuery({
+  const { data, isLoading } = useQuery({
     queryFn: () => GetStatsGithub(),
     queryKey: ["github-stats"],
     staleTime: 1000 * 60 * 60 * 24,
@@ -39,99 +39,70 @@ export default function GithubStats() {
       <div className="my-10">
         <Breakline />
       </div>
-      <div className="grid grid-cols-2 gap-4 md:grid-cols-4">
-        <div className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-          <h3 className="text-sm text-gray-600 dark:text-gray-400">
-            Total Contributions
-          </h3>
-          <p className="text-2xl font-bold">
-            {data.contributionsCollection.contributionCalendar.totalContributions.toLocaleString()}
-          </p>
-        </div>
-        <div className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-          <h3 className="text-sm text-gray-600 dark:text-gray-400">
-            Repositories
-          </h3>
-          <p className="text-2xl font-bold">
-            {data.repositories.totalCount}
-          </p>
-        </div>
-        <div className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-          <h3 className="text-sm text-gray-600 dark:text-gray-400">
-            Total Stars
-          </h3>
-          <p className="text-2xl font-bold">{totalStars}</p>
-        </div>
-        <div className="rounded-lg border border-gray-200 p-4 dark:border-gray-700">
-          <h3 className="text-sm text-gray-600 dark:text-gray-400">
-            Profile
-          </h3>
-          <a
-            href={GITHUB_ACCOUNTS.github_url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className="text-lg font-bold text-blue-600 hover:underline dark:text-blue-400"
-          >
-            @{data.login}
-          </a>
-        </div>
-      </div>
 
-      <div className="mt-8">
-        <h2 className="mb-4 text-xl font-bold">Contribution Calendar</h2>
-        <div className="overflow-x-auto">
+      <div className="space-y-8">
+        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+          <GithubStatsCard title="Total Contributions" data={data.contributionsCollection.contributionCalendar.totalContributions} />
+          <GithubStatsCard title="Repositories" data={data.repositories.totalCount} />
+          <GithubStatsCard title="Total Stars" data={totalStars} />
+
+        </div>
+
+        <div>
+          <div className="overflow-x-auto">
             <ContributionCalendar
               weeks={stats.contributionsCollection.contributionCalendar.weeks}
               months={stats.contributionsCollection.contributionCalendar.months}
               colors={stats.contributionsCollection.contributionCalendar.colors}
             />
+          </div>
         </div>
-      </div>
 
-      <div>
-        <h2 className="mb-4 text-xl font-bold">Top Repositories</h2>
-        <div className="space-y-3">
-          {topRepos.map((repo) => (
-            <a
-              key={repo.node.id}
-              href={repo.node.url}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="block rounded-lg border border-gray-200 p-4 transition hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
-            >
-              <div className="flex items-start justify-between">
-                <div className="flex-1">
-                  <h3 className="font-semibold text-gray-900 dark:text-white">
-                    {repo.node.name}
-                  </h3>
-                  {repo.node.description && (
-                    <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
-                      {repo.node.description}
-                    </p>
-                  )}
-                  <div className="mt-2 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
-                    {repo.node.primaryLanguage && (
-                      <span className="flex items-center gap-1">
-                        <span
-                          className="h-2.5 w-2.5 rounded-full"
-                          style={{
-                            backgroundColor: repo.node.primaryLanguage.color,
-                          }}
-                        />
-                        {repo.node.primaryLanguage.name}
-                      </span>
+        <div>
+          <h2 className="mb-4 text-xl font-bold">Top Repositories</h2>
+          <div className="space-y-3 grid lg:grid-cols-2 gap-4">
+            {topRepos.map((repo) => (
+              <a
+                key={repo.node.id}
+                href={repo.node.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="block rounded-lg border border-gray-200 p-4 transition hover:border-gray-300 dark:border-gray-700 dark:hover:border-gray-600"
+              >
+                <div className="flex items-start justify-between">
+                  <div className="flex-1">
+                    <h3 className="font-semibold text-gray-900 dark:text-white">
+                      {repo.node.name}
+                    </h3>
+                    {repo.node.description && (
+                      <p className="mt-1 text-sm text-gray-600 dark:text-gray-400">
+                        {repo.node.description}
+                      </p>
                     )}
-                    {repo.node.stargazerCount > 0 && (
-                      <span>⭐ {repo.node.stargazerCount}</span>
-                    )}
-                    {repo.node.forkCount > 0 && (
-                      <span>🔀 {repo.node.forkCount}</span>
-                    )}
+                    <div className="mt-2 flex items-center gap-4 text-sm text-gray-600 dark:text-gray-400">
+                      {repo.node.primaryLanguage && (
+                        <span className="flex items-center gap-1">
+                          <span
+                            className="h-2.5 w-2.5 rounded-full"
+                            style={{
+                              backgroundColor: repo.node.primaryLanguage.color,
+                            }}
+                          />
+                          {repo.node.primaryLanguage.name}
+                        </span>
+                      )}
+                      {repo.node.stargazerCount > 0 && (
+                        <span>⭐ {repo.node.stargazerCount}</span>
+                      )}
+                      {repo.node.forkCount > 0 && (
+                        <span>🔀 {repo.node.forkCount}</span>
+                      )}
+                    </div>
                   </div>
                 </div>
-              </div>
-            </a>
-          ))}
+              </a>
+            ))}
+          </div>
         </div>
       </div>
     </section>
