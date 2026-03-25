@@ -18,11 +18,7 @@ export const UMAMI_ACCOUNT = {
       domain: "muhanifs.my.id",
       website_id: process.env.UMAMI_WEBSITE_ID_MYID,
       umami_url:
-        "https://cloud.umami.is/share/YBbXz2wWG0lCgSLt/www.muhanifs.my.id",
+        "https://cloud.umami.is/share/3I7Vl6LnpjxUINYa",
     },
-    // {
-    //   domain: "https://portofolio-git-dev-muhanifs-projects.vercel.app/",
-
-    // }
   ],
 };

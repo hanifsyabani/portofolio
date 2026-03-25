@@ -41,7 +41,7 @@ export default function GithubStats() {
       </div>
 
       <div className="space-y-8">
-        <div className="grid grid-cols-2 gap-4 md:grid-cols-3">
+        <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
           <GithubStatsCard title="Total Contributions" data={data.contributionsCollection.contributionCalendar.totalContributions} />
           <GithubStatsCard title="Repositories" data={data.repositories.totalCount} />
           <GithubStatsCard title="Total Stars" data={totalStars} />

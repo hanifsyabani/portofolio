@@ -59,8 +59,8 @@ export default function AchievementDetailDialog({
       <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-white p-0 max-w-6xl sm:rounded-2xl">
         <DialogTitle className="sr-only">{achievement.name}</DialogTitle>
 
-        <div className="flex flex-col md:flex-row">
-          <div className="relative flex items-center justify-center bg-neutral-900/80 md:w-[70%]">
+        <div className="lg:flex flex-col md:flex-row">
+          <div className="relative w-full h-full  flex items-center justify-center bg-neutral-900/80 md:w-[70%]">
             <Image
               src={imageUrl}
               alt={achievement.name || "Achievement Certificate"}
@@ -69,7 +69,7 @@ export default function AchievementDetailDialog({
             />
           </div>
 
-          <div className="flex flex-1 flex-col border-t border-white/[0.06] p-6 md:border-l md:border-t-0 md:p-8">
+          <div className="hidden lg:flex flex-1 flex-col border-t border-white/[0.06] p-6 md:border-l md:border-t-0 md:p-8">
             <div className="mb-4 flex flex-wrap gap-2">
               {achievement.type && (
                 <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">

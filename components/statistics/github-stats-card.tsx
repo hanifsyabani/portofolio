@@ -11,7 +11,7 @@ export default function GithubStatsCard({ title, data }: GithubStatsCardProps) {
             <h3 className="text-sm text-gray-600 dark:text-gray-400">
                 {title}
             </h3>
-            <p className="text-3xl font-bold text-blue-400">
+            <p className="lg:text-3xl text-xl font-bold text-blue-400">
                 {data}
             </p>
         </Card>
