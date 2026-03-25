@@ -8,6 +8,7 @@ import Breakline from "@/components/ui/breakline";
 import Menu from "./menu";
 import Copyright from "../ui/copyright";
 import { usePathname } from "next/navigation";
+import RotatingText from "../ui/rotating-text";
 
 export default function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
@@ -32,9 +33,20 @@ export default function MobileMenu() {
     return (
         <div className="lg:hidden w-full mb-8 sticky top-0 z-4">
             <nav className="flex justify-between items-center px-4 py-4 0 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-sm">
-                <h1 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-800 to-neutral-500 dark:from-neutral-200 dark:to-neutral-500">
-                    Muhammad Hanif Sya'bani
-                </h1>
+                <div className="text-lg font-bold">
+                    <RotatingText
+                        texts={["Muhammad Hanif Sya'bani", "Frontend Developer", "ML Enthusiast"]}
+                        mainClassName="px-2 sm:px-2 md:px-3   overflow-hidden py-0.5 sm:py-1 md:py-2 justify-center rounded-lg"
+                        staggerFrom={"last"}
+                        initial={{ y: "100%" }}
+                        animate={{ y: 0 }}
+                        exit={{ y: "-120%" }}
+                        staggerDuration={0.025}
+                        splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                        transition={{ type: "spring", damping: 30, stiffness: 400 }}
+                        rotationInterval={7000}
+                    />
+                </div>
                 <button
                     onClick={() => setIsOpen(true)}
                     className="p-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"
