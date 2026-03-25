@@ -30,8 +30,8 @@ export default function MobileMenu() {
     }, [isOpen]);
 
     return (
-        <div className="lg:hidden w-full mb-8">
-            <nav className="flex justify-between items-center px-4 py-4 sticky top-0 z-40 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-sm">
+        <div className="lg:hidden w-full mb-8 sticky top-0 z-4">
+            <nav className="flex justify-between items-center px-4 py-4 0 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-sm">
                 <h1 className="text-lg font-bold bg-clip-text text-transparent bg-gradient-to-r from-neutral-800 to-neutral-500 dark:from-neutral-200 dark:to-neutral-500">
                     Muhammad Hanif Sya'bani
                 </h1>

@@ -83,13 +83,13 @@ export default function CareerCard({ career }: { career: Career }) {
               <h3 className="text-lg font-bold dark:text-neutral-100 text-neutral-900 leading-snug">
                 {career.position}
               </h3>
-              <div className="mt-1 flex flex-wrap items-center gap-x-2 gap-y-1 text-sm text-neutral-400">
+              <div className="lg:mt-1 mt-2 flex flex-wrap space-y-2 lg:space-y-0 items-center lg:gap-x-2 lg:gap-y-1 text-sm text-neutral-400">
                 {career.link ? (
                   <Link
                     href={career.link}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1 dark:text-neutral-300 text-neutral-900 hover:text-blue-400 transition-colors duration-200"
+                    className="inline-flex items-center mt gap-1 dark:text-neutral-300 text-neutral-900 hover:text-blue-400 transition-colors duration-200"
                   >
                     {career.company}
                   </Link>
