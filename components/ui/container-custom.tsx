@@ -6,7 +6,7 @@ interface ContainerProps {
 
 export default function Container({ children, className = "", ...others }: ContainerProps) {
   return (
-    <div className={`mt-10 p-8 lg:mt-0 ${className} `} {...others}>
+    <div className={`mt-10 p-5 lg:p-8 lg:mt-0 ${className} `} {...others}>
       {children}
     </div>
   );

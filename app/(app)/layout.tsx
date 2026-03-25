@@ -64,10 +64,10 @@ export default function RootLayout({
         <QueryProvider>
           <AosProvider>
             <ThemeProviderContext>
-              <div className="lg:flex max-w-7xl mx-auto py-10">
+              <div className="lg:flex lg:max-w-7xl mx-auto py-4 lg:py-10">
                 <Toaster position="top-right" richColors />
                   <Sidebar />
-                <main className="px-4 lg:max-w-250 w-full">
+                <main className="px-0 lg:px-4 lg:max-w-250 w-full">
                   {children}
                 </main>
 
