@@ -14,7 +14,7 @@ export default function EducationCard({ title, image, major, gpa, year, location
     return (
         <Card className="p-4 bg-linear-to-br dark:from-neutral-900 dark:to-neutral-950 bg-neutral-100 ">
             <div className="flex items-center  gap-4">
-                <div className="w-20 h-20">
+                <div className="lg:w-20 lg:h-20">
                     <Image
                         src={image}
                         alt={title}

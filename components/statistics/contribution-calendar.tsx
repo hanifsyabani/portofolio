@@ -111,8 +111,8 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
         </div>
       </div>
 
-      <div className="mt-2 flex flex-wrap items-center justify-between gap-2">
-        <div className="flex items-center gap-2 text-sm">
+      <div className="mt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
+        <div className="flex items-center gap-2">
           <span className="dark:text-neutral-400">
             Less
           </span>
@@ -132,12 +132,18 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
         <div
           className={clsx(
             `${selectContribution?.date ? "opacity-100" : "opacity-0"}`,
-            "rounded bg-neutral-200 px-2 py-1 text-sm dark:bg-neutral-800 transition-opacity"
+            "rounded bg-neutral-200 px-3 py-1.5 text-xs md:text-sm dark:bg-neutral-800 transition-opacity flex items-center justify-center w-full md:w-auto h-8"
           )}
         >
-          {selectContribution?.count}{" "}
-          {selectContribution?.count === 1 ? "contribution on" : "contributions on"}{" "}
-          {selectContribution?.date}
+          {selectContribution?.date ? (
+            <span>
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">{selectContribution.count}</span>{" "}
+              {selectContribution.count === 1 ? "contribution" : "contributions"} on{" "}
+              <span className="font-medium text-neutral-900 dark:text-neutral-100">{selectContribution.date}</span>
+            </span>
+          ) : (
+            <span className="invisible">0 contributions on 2024-01-01</span>
+          )}
         </div>
       </div>
     </>
