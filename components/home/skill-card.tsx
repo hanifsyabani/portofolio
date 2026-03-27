@@ -18,7 +18,7 @@ export default function SkillCard({
 }: SkillCardProps) {
   return (
     <>
-      <div className="relative z-10 flex h-full flex-col gap-4 p-2  cursor-pointer group text-center" >
+      <div className="relative flex h-full flex-col gap-4 p-2 cursor-pointer group text-center" >
         <div
           className={`flex h-12 w-12 lg:h-16 lg:w-16 mx-auto items-center justify-center rounded-xl bg-linear-to-br ${color} p-0.5 transition-transform duration-300 group-hover:scale-110`}
         >
