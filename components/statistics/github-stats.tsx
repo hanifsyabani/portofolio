@@ -51,13 +51,11 @@ export default function GithubStats() {
         </div>
 
         <div>
-          <div className="overflow-x-auto">
-            <ContributionCalendar
-              weeks={stats.contributionsCollection.contributionCalendar.weeks}
-              months={stats.contributionsCollection.contributionCalendar.months}
-              colors={stats.contributionsCollection.contributionCalendar.colors}
-            />
-          </div>
+          <ContributionCalendar
+            weeks={stats.contributionsCollection.contributionCalendar.weeks}
+            months={stats.contributionsCollection.contributionCalendar.months}
+            colors={stats.contributionsCollection.contributionCalendar.colors}
+          />
         </div>
 
         <div>
