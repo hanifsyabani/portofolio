@@ -7,6 +7,11 @@ import ThemeProviderContext from "../../provider/theme-provider";
 import NextTopLoader from "nextjs-toploader";
 import QueryProvider from "@/provider/query-provider";
 import { Toaster } from "sonner";
+import AosProvider from "../../provider/aos-provider";
+import { notFound } from "next/navigation";
+import { routing } from "@/i18n/routing";
+import { hasLocale, NextIntlClientProvider } from 'next-intl';
+import { getMessages } from "next-intl/server";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -40,15 +45,25 @@ export const metadata: Metadata = {
   },
 };
 
-import AosProvider from "../../provider/aos-provider";
-
-export default function RootLayout({
-  children,
-}: Readonly<{
+type Props = {
   children: React.ReactNode;
-}>) {
+  params: Promise<{ locale: string }>;
+};
+
+
+
+export default async function RootLayout({
+  children,
+  params
+}: Props) {
+
+  const { locale } = await params;
+  if (!hasLocale(routing.locales, locale)) {
+    notFound();
+  }
+  const messages = await getMessages()
   return (
-    <html lang="en" suppressHydrationWarning={true} >
+    <html lang={locale} suppressHydrationWarning={true} >
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
@@ -64,14 +79,16 @@ export default function RootLayout({
         <QueryProvider>
           <AosProvider>
             <ThemeProviderContext>
-              <div className="lg:flex lg:max-w-7xl mx-auto py-4 lg:py-10">
-                <Toaster position="top-right" richColors />
+              <NextIntlClientProvider locale={locale} messages={messages}>
+                <div className="lg:flex lg:max-w-7xl mx-auto py-4 lg:py-10">
+                  <Toaster position="top-right" richColors />
                   <Sidebar />
-                <main className="px-0 lg:px-4 lg:max-w-250 w-full">
-                  {children}
-                </main>
+                  <main className="px-0 lg:px-4 lg:max-w-250 w-full">
+                    {children}
+                  </main>
 
-              </div>
+                </div>
+              </NextIntlClientProvider>
             </ThemeProviderContext>
           </AosProvider>
         </QueryProvider>

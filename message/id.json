@@ -1,0 +1,144 @@
+{
+  "HomePage": {
+    "intro": "Halo, saya Muhammad Hanif Sya'bani",
+    "location": "Palembang, Indonesia",
+    "resume": {
+      "paragraph_1": "Mahasiswa Sistem Komputer di Universitas Sriwijaya dengan minat di bidang Machine Learning, Computer Vision, dan pengembangan web modern. Saat ini menjadi Peneliti Mahasiswa di AI-Medical Center of Excellence (AIMed CoE), mengembangkan multi-object tracking untuk video ultrasonografi jantung anak. Terpilih di Bangkit Academy 2024 sebagai salah satu dari 4.636 peserta dari lebih dari 45.000 pendaftar, di mana saya membangun HidroQu — aplikasi monitoring hidroponik menggunakan transfer learning dengan MobileNetV2.",
+      "paragraph_2": "Berpengalaman sebagai Frontend Web Developer di PT Pertamina Hulu Rokan mengembangkan alat analisis fiber optik dengan Next.js dan TypeScript, serta berkontribusi aktif sebagai Frontend Developer di GDSC Universitas Sriwijaya membangun antarmuka web responsif dengan React.js dan Next.js."
+    },
+    "skills": {
+      "title": "Keahlian",
+      "sub_title": "Kemampuan profesional saya."
+    }
+  },
+  "AboutPage": {
+    "title": "Tentang Saya",
+    "description": "Pengenalan singkat tentang siapa saya.",
+    "resume": {
+      "paragraph_1": "Saya Hanif, seorang Software Engineer dan Peneliti Mahasiswa yang berdomisili di Palembang, Indonesia. Saat ini saya bekerja di AI-Medical Center of Excellence (AIMed CoE), di mana saya fokus pada penelitian Computer Vision — khususnya mengembangkan multi-object tracking (MOT) untuk video ultrasonografi jantung anak sebagai bagian dari skripsi saya. Selain penelitian, saya mengelola situs web resmi untuk Intelligent System Research Group.",
+      "paragraph_2": "Saya terpilih di Bangkit Academy 2024 sebagai salah satu dari 4.636 mahasiswa dari lebih dari 45.000 pendaftar, di mana saya membangun HidroQu — aplikasi monitoring hidroponik menggunakan transfer learning dengan MobileNetV2. Saya juga mendapatkan pengalaman industri sebagai intern Frontend Web Developer di PT Pertamina Hulu Rokan, mengembangkan kalkulator atenuasi fiber optik menggunakan Next.js dan TypeScript untuk sistem jaringan optik mereka.",
+      "paragraph_3": "Selain itu, saya pernah menjadi Asisten Laboratorium untuk Robotika, Sistem Kontrol, dan Sistem Embedded di Universitas Sriwijaya, serta berkontribusi sebagai Frontend Developer di Google Developer Students Club (GDSC). Saya juga membangun platform universitas nyata termasuk SIM DIH UNSRI dan situs WCU UNSRI menggunakan React.js, Next.js, TypeScript, dan Tailwind CSS."
+    },
+    "career": {
+      "title": "Pengalaman",
+      "sub_title": "Perjalanan profesional dan sorotan karier saya."
+    },
+    "education": {
+      "title": "Pendidikan",
+      "sub_title": "Pendidikan saya."
+    }
+  },
+  "AchievementsPage": {
+    "title": "Pencapaian",
+    "description": "Beberapa pencapaian yang pernah saya raih selama perjalanan karir saya.",
+    "no_data": "Tidak ada pencapaian untuk ditampilkan."
+  },
+  "ProjectsPage": {
+    "title": "Proyek",
+    "description": "Beberapa proyek yang pernah saya kerjakan selama perjalanan karir saya.",
+    "view_project": "Lihat Proyek",
+    "featured": "Unggulan",
+    "no_image": "Tidak ada gambar",
+    "source": "Sumber",
+    "live_demo": "Demo Langsung",
+    "no_data": "Tidak ada proyek untuk ditampilkan.",
+    "detail": {
+      "back": "Kembali ke Proyek",
+      "source_code": "Kode Sumber",
+      "live_demo": "Demo Langsung"
+    }
+  },
+  "StatisticsPage": {
+    "umami": {
+      "title": "Audiens Trafik",
+      "sub_title": "Trafik dan analitik situs web pribadi saya.",
+      "error": "Gagal memuat data Umami.",
+      "page_views": "Tampilan Halaman",
+      "visitors": "Pengunjung",
+      "visits": "Kunjungan",
+      "countries": "Negara",
+      "events": "Acara",
+      "sessions": "Sesi"
+    },
+    "github": {
+      "title": "Aktivitas Github",
+      "sub_title": "Berikut beberapa statistik dan kontribusi saya di GitHub.",
+      "total_contributions": "Total Kontribusi",
+      "repositories": "Repositori",
+      "total_stars": "Total Bintang",
+      "top_repositories": "Repositori Teratas",
+      "less": "Sedikit",
+      "more": "Banyak",
+      "contribution": "kontribusi",
+      "contributions": "kontribusi",
+      "on": "pada"
+    }
+  },
+  "ContactPage": {
+    "title": "Kontak",
+    "description": "Punya pertanyaan, proposal, atau hanya ingin menyapa? Silakan.",
+    "find_me": "Temukan Saya Di",
+    "find_me_sub": "Mari terhubung melalui platform pilihan Anda.",
+    "form": {
+      "title": "Kirim Pesan",
+      "sub_title": "Punya pertanyaan atau ingin bekerja sama? Isi formulir di bawah ini.",
+      "name": "Nama",
+      "name_placeholder": "Nama Anda",
+      "email": "Email",
+      "email_placeholder": "email@contoh.com",
+      "message": "Pesan",
+      "message_placeholder": "Ceritakan tentang proyek, ide, atau sekedar menyapa...",
+      "submit": "Kirim Pesan",
+      "success": "Pesan berhasil dikirim",
+      "error_name": "Nama wajib diisi",
+      "error_email": "Email tidak valid",
+      "error_message": "Pesan wajib diisi"
+    },
+    "card": {
+      "email": {
+        "description": "Kirimkan saya email untuk pertanyaan, kolaborasi, atau sekadar menyapa."
+
+      },
+      "linkedin": {
+        "description": "Terhubung dengan saya di LinkedIn untuk peluang profesional."
+
+      },
+      "github": {
+        "description": "Lihat proyek open-source dan kontribusi saya di GitHub."
+
+      },
+      "instagram": {
+        "description": "Ikuti perjalanan kreatif saya dan momen di balik layar."
+
+      }
+    }
+  },
+  "ChatRoomPage": {
+    "title": "Ruang Obrolan"
+  },
+  "AchievementDetail": {
+    "credential_id": "ID Kredensial",
+    "issuing_organization": "Organisasi Penerbit",
+    "issue_date": "Tanggal Terbit",
+    "expiration_date": "Tanggal Kedaluwarsa",
+    "view_credential": "Lihat Kredensial",
+    "view_detail": "Lihat Detail"
+  },
+  "Navigation": {
+    "Home": "Beranda",
+    "About": "Tentang",
+    "Achievements": "Pencapaian",
+    "Projects": "Proyek",
+    "Statistics": "Statistik",
+    "Chat Room": "Ruang Obrolan",
+    "Contact": "Kontak"
+  },
+  "MobileMenu": {
+    "menu": "Menu"
+  },
+  "Footer": {
+    "copyright": "Hak Cipta",
+    "name": "Muhammad Hanif Sya'bani",
+    "rights": "Semua hak dilindungi."
+  }
+}

@@ -1,0 +1,141 @@
+{
+  "HomePage": {
+    "intro": "Hi, I'm Muhammad Hanif Sya'bani",
+    "location": "Palembang, Indonesia",
+    "resume": {
+      "paragraph_1": "A Computer Systems student at Universitas Sriwijaya with a passion for Machine Learning, Computer Vision, and modern web development. Currently a Student Researcher at AI-Medical Center of Excellence (AIMed CoE), developing multi-object tracking for pediatric heart ultrasound videos. Selected for Bangkit Academy 2024 as one of 4,636 from over 45,000 applicants, where I built HidroQu — a hydroponic monitoring app using transfer learning with MobileNetV2.",
+      "paragraph_2": "Experienced as a Frontend Web Developer at PT Pertamina Hulu Rokan developing fiber optic analysis tools with Next.js and TypeScript, and actively contributed as a Frontend Developer at GDSC Universitas Sriwijaya building responsive web interfaces with React.js and Next.js."
+    },
+    "skills": {
+      "title": "Skills",
+      "sub_title": "My professional skills."
+    }
+  },
+  "AboutPage": {
+    "title": "About Me",
+    "description": "A brief introduction about who I am.",
+    "resume": {
+      "paragraph_1": "I'm Hanif, a Software Engineer and Student Researcher based in Palembang, Indonesia. I'm currently working at the AI-Medical Center of Excellence (AIMed CoE), where I focus on Computer Vision research — specifically developing multi-object tracking (MOT) for pediatric heart ultrasound videos as part of my thesis. Alongside research, I manage the official website for the Intelligent System Research Group.",
+      "paragraph_2": "I was selected for Bangkit Academy 2024 as one of 4,636 students from over 45,000 applicants, where I built HidroQu — a hydroponic monitoring application using transfer learning with MobileNetV2. I also gained industry experience as a Frontend Web Developer intern at PT Pertamina Hulu Rokan, developing a fiber optic attenuation calculator using Next.js and TypeScript for their optical network systems.",
+      "paragraph_3": "Beyond that, I've served as a Laboratory Assistant for Robotics, Control Systems, and Embedded Systems at Universitas Sriwijaya, and contributed as a Frontend Developer at Google Developer Students Club (GDSC). I've also built real-world university platforms including SIM DIH UNSRI and the WCU UNSRI website using React.js, Next.js, TypeScript, and Tailwind CSS."
+    },
+    "career": {
+      "title": "Experience",
+      "sub_title": "My professional journey and career highlights."
+    },
+    "education": {
+      "title": "Education",
+      "sub_title": "My education."
+    }
+  },
+  "AchievementsPage": {
+    "title": "Achievements",
+    "description": "Some achievements I have earned throughout my career journey.",
+    "no_data": "No achievements to display."
+  },
+  "ProjectsPage": {
+    "title": "Projects",
+    "description": "Some projects I have worked on throughout my career journey.",
+    "view_project": "View Project",
+    "featured": "Featured",
+    "no_image": "No image",
+    "source": "Source",
+    "live_demo": "Live Demo",
+    "no_data": "No projects to display.",
+    "detail": {
+      "back": "Back to Projects",
+      "source_code": "Source Code",
+      "live_demo": "Live Demo"
+    }
+  },
+  "StatisticsPage": {
+    "umami": {
+      "title": "Traffic Audience",
+      "sub_title": "My personal website traffic and analytics.",
+      "error": "Failed to load Umami data.",
+      "page_views": "Page Views",
+      "visitors": "Visitors",
+      "visits": "Visits",
+      "countries": "Countries",
+      "events": "Events",
+      "sessions": "Sessions"
+    },
+    "github": {
+      "title": "Github Activity",
+      "sub_title": "Here are some of my statistics and contributions on GitHub.",
+      "total_contributions": "Total Contributions",
+      "repositories": "Repositories",
+      "total_stars": "Total Stars",
+      "top_repositories": "Top Repositories",
+      "less": "Less",
+      "more": "More",
+      "contribution": "contribution",
+      "contributions": "contributions",
+      "on": "on"
+    }
+  },
+  "ContactPage": {
+    "title": "Contact",
+    "description": "Got a question, proposal, or just want to say hello? Go ahead.",
+    "find_me": "Find Me On",
+    "find_me_sub": "Let's connect through your preferred platform.",
+    "form": {
+      "title": "Send a Message",
+      "sub_title": "Have a question or want to work together? Fill out the form below.",
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "email": "Email",
+      "email_placeholder": "you@example.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project, idea, or just say hi...",
+      "submit": "Send Message",
+      "success": "Message sent successfully",
+      "error_name": "Name is required",
+      "error_email": "Invalid email",
+      "error_message": "Message is required"
+    },
+    "card" : {
+      "email": {
+        "description": "Drop me an email for inquiries, collaborations, or just to say hello."
+      },
+      "linkedin": {
+        "description": "Connect with me on LinkedIn for professional opportunities."
+
+      },
+      "github": {
+        "description": "Check out my open-source projects and contributions on GitHub."
+      },
+      "instagram": {
+        "description": "Follow my creative journey and behind-the-scenes moments."
+      }
+    }
+  },
+  "ChatRoomPage": {
+    "title": "Chat Room"
+  },
+  "AchievementDetail": {
+    "credential_id": "Credential ID",
+    "issuing_organization": "Issuing Organization",
+    "issue_date": "Issue Date",
+    "expiration_date": "Expiration Date",
+    "view_credential": "View Credential",
+    "view_detail": "View Detail"
+  },
+  "Navigation": {
+    "Home": "Home",
+    "About": "About",
+    "Achievements": "Achievements",
+    "Projects": "Projects",
+    "Statistics": "Statistics",
+    "Chat Room": "Chat Room",
+    "Contact": "Contact"
+  },
+  "MobileMenu": {
+    "menu": "Menu"
+  },
+  "Footer": {
+    "copyright": "Copyright",
+    "name": "Muhammad Hanif Sya'bani",
+    "rights": "All rights reserved."
+  }
+}

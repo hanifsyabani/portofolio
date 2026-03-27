@@ -30,7 +30,10 @@ export type Project = {
   _rev: string;
   title?: string;
   slug?: Slug;
-  description?: string;
+  description?: {
+    en?: string;
+    id?: string;
+  };
   image?: {
     asset?: SanityImageAssetReference;
     media?: unknown;
@@ -41,24 +44,44 @@ export type Project = {
   link_demo?: string;
   link_github?: string;
   stacks?: Array<string>;
-  content?: Array<{
-    children?: Array<{
-      marks?: Array<string>;
-      text?: string;
-      _type: "span";
+  content?: {
+    en?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
       _key: string;
     }>;
-    style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
-    listItem?: "bullet" | "number";
-    markDefs?: Array<{
-      href?: string;
-      _type: "link";
+    id?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "normal" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "blockquote";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
       _key: string;
     }>;
-    level?: number;
-    _type: "block";
-    _key: string;
-  }>;
+  };
   is_show?: boolean;
   is_featured?: boolean;
 };
@@ -91,7 +114,10 @@ export type Career = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  position?: string;
+  position?: {
+    en?: string;
+    id?: string;
+  };
   company?: string;
   logo?: {
     asset?: SanityImageAssetReference;
@@ -100,16 +126,31 @@ export type Career = {
     crop?: SanityImageCrop;
     _type: "image";
   };
-  location?: string;
+  location?: {
+    en?: string;
+    id?: string;
+  };
   locationType?: "onsite" | "remote" | "hybrid";
   type?: "full-time" | "part-time" | "contract" | "internship" | "freelance";
   startDate?: string;
   endDate?: string;
-  industry?: string;
+  industry?: {
+    en?: string;
+    id?: string;
+  };
   link?: string;
-  responsibilities?: Array<string>;
-  lessonsLearned?: Array<string>;
-  impact?: Array<string>;
+  responsibilities?: {
+    en?: Array<string>;
+    id?: Array<string>;
+  };
+  lessonsLearned?: {
+    en?: Array<string>;
+    id?: Array<string>;
+  };
+  impact?: {
+    en?: Array<string>;
+    id?: Array<string>;
+  };
   isShow?: boolean;
 };
 
@@ -119,7 +160,10 @@ export type Achievement = {
   _createdAt: string;
   _updatedAt: string;
   _rev: string;
-  name?: string;
+  name?: {
+    en?: string;
+    id?: string;
+  };
   slug?: Slug;
   credentialId?: string;
   issuingOrganization?: string;
@@ -257,7 +301,10 @@ export type AllSanitySchemaTypes =
 // Query: *[_type == "achievement" && isShow == true]{    _id,    name,    slug,    credentialId,    issuingOrganization,    type,    category,    urlCredential,    issueDate,    expirationDate,    image  } | order(issueDate desc)
 export type AllAchievementQueryResult = Array<{
   _id: string;
-  name: string | null;
+  name: {
+    en?: string;
+    id?: string;
+  } | null;
   slug: Slug | null;
   credentialId: string | null;
   issuingOrganization: string | null;
@@ -280,7 +327,10 @@ export type AllAchievementQueryResult = Array<{
 // Query: *[_type == "achievement" && slug.current == $slug][0]{    _id,    name,    slug,    credentialId,    issuingOrganization,    type,    category,    urlCredential,    issueDate,    expirationDate,    image  }
 export type AchievementBySlugQueryResult = {
   _id: string;
-  name: string | null;
+  name: {
+    en?: string;
+    id?: string;
+  } | null;
   slug: Slug | null;
   credentialId: string | null;
   issuingOrganization: string | null;
@@ -303,7 +353,10 @@ export type AchievementBySlugQueryResult = {
 // Query: *[_type == "career" && isShow == true]{    _id,    position,    company,    logo,    location,    locationType,    type,    startDate,    endDate,    industry,    link,    responsibilities,    lessonsLearned,    impact  } | order(startDate desc)
 export type AllCareerQueryResult = Array<{
   _id: string;
-  position: string | null;
+  position: {
+    en?: string;
+    id?: string;
+  } | null;
   company: string | null;
   logo: {
     asset?: SanityImageAssetReference;
@@ -312,7 +365,10 @@ export type AllCareerQueryResult = Array<{
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  location: string | null;
+  location: {
+    en?: string;
+    id?: string;
+  } | null;
   locationType: "hybrid" | "onsite" | "remote" | null;
   type:
     | "contract"
@@ -323,11 +379,23 @@ export type AllCareerQueryResult = Array<{
     | null;
   startDate: string | null;
   endDate: string | null;
-  industry: string | null;
+  industry: {
+    en?: string;
+    id?: string;
+  } | null;
   link: string | null;
-  responsibilities: Array<string> | null;
-  lessonsLearned: Array<string> | null;
-  impact: Array<string> | null;
+  responsibilities: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
+  lessonsLearned: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
+  impact: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
 }>;
 
 // Source: ../app/sanity/queries.ts
@@ -335,7 +403,10 @@ export type AllCareerQueryResult = Array<{
 // Query: *[_type == "career" && _id == $id][0]{    _id,    position,    company,    logo,    location,    locationType,    type,    startDate,    endDate,    industry,    link,    responsibilities,    lessonsLearned,    impact  }
 export type CareerByIdQueryResult = {
   _id: string;
-  position: string | null;
+  position: {
+    en?: string;
+    id?: string;
+  } | null;
   company: string | null;
   logo: {
     asset?: SanityImageAssetReference;
@@ -344,7 +415,10 @@ export type CareerByIdQueryResult = {
     crop?: SanityImageCrop;
     _type: "image";
   } | null;
-  location: string | null;
+  location: {
+    en?: string;
+    id?: string;
+  } | null;
   locationType: "hybrid" | "onsite" | "remote" | null;
   type:
     | "contract"
@@ -355,11 +429,149 @@ export type CareerByIdQueryResult = {
     | null;
   startDate: string | null;
   endDate: string | null;
-  industry: string | null;
+  industry: {
+    en?: string;
+    id?: string;
+  } | null;
   link: string | null;
-  responsibilities: Array<string> | null;
-  lessonsLearned: Array<string> | null;
-  impact: Array<string> | null;
+  responsibilities: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
+  lessonsLearned: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
+  impact: {
+    en?: Array<string>;
+    id?: Array<string>;
+  } | null;
+} | null;
+
+// Source: ../app/sanity/queries.ts
+// Variable: allProjectQuery
+// Query: *[_type == "project" && is_show == true]{    _id,    title,    slug,    description,    image,    link_demo,    link_github,    stacks,    content,    is_show,    is_featured  } | order(_createdAt desc)
+export type AllProjectQueryResult = Array<{
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: {
+    en?: string;
+    id?: string;
+  } | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  link_demo: string | null;
+  link_github: string | null;
+  stacks: Array<string> | null;
+  content: {
+    en?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    id?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+  } | null;
+  is_show: true;
+  is_featured: boolean | null;
+}>;
+
+// Source: ../app/sanity/queries.ts
+// Variable: projectBySlugQuery
+// Query: *[_type == "project" && slug.current == $slug][0]{    _id,    title,    slug,    description,    image,    link_demo,    link_github,    stacks,    content,    is_show,    is_featured  }
+export type ProjectBySlugQueryResult = {
+  _id: string;
+  title: string | null;
+  slug: Slug | null;
+  description: {
+    en?: string;
+    id?: string;
+  } | null;
+  image: {
+    asset?: SanityImageAssetReference;
+    media?: unknown;
+    hotspot?: SanityImageHotspot;
+    crop?: SanityImageCrop;
+    _type: "image";
+  } | null;
+  link_demo: string | null;
+  link_github: string | null;
+  stacks: Array<string> | null;
+  content: {
+    en?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+    id?: Array<{
+      children?: Array<{
+        marks?: Array<string>;
+        text?: string;
+        _type: "span";
+        _key: string;
+      }>;
+      style?: "blockquote" | "h1" | "h2" | "h3" | "h4" | "h5" | "h6" | "normal";
+      listItem?: "bullet" | "number";
+      markDefs?: Array<{
+        href?: string;
+        _type: "link";
+        _key: string;
+      }>;
+      level?: number;
+      _type: "block";
+      _key: string;
+    }>;
+  } | null;
+  is_show: boolean | null;
+  is_featured: boolean | null;
 } | null;
 
 // Query TypeMap
@@ -370,5 +582,7 @@ declare module "@sanity/client" {
     '\n  *[_type == "achievement" && slug.current == $slug][0]{\n    _id,\n    name,\n    slug,\n    credentialId,\n    issuingOrganization,\n    type,\n    category,\n    urlCredential,\n    issueDate,\n    expirationDate,\n    image\n  }\n': AchievementBySlugQueryResult;
     '\n  *[_type == "career" && isShow == true]{\n    _id,\n    position,\n    company,\n    logo,\n    location,\n    locationType,\n    type,\n    startDate,\n    endDate,\n    industry,\n    link,\n    responsibilities,\n    lessonsLearned,\n    impact\n  } | order(startDate desc)\n': AllCareerQueryResult;
     '\n  *[_type == "career" && _id == $id][0]{\n    _id,\n    position,\n    company,\n    logo,\n    location,\n    locationType,\n    type,\n    startDate,\n    endDate,\n    industry,\n    link,\n    responsibilities,\n    lessonsLearned,\n    impact\n  }\n': CareerByIdQueryResult;
+    '\n  *[_type == "project" && is_show == true]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    link_demo,\n    link_github,\n    stacks,\n    content,\n    is_show,\n    is_featured\n  } | order(_createdAt desc)\n': AllProjectQueryResult;
+    '\n  *[_type == "project" && slug.current == $slug][0]{\n    _id,\n    title,\n    slug,\n    description,\n    image,\n    link_demo,\n    link_github,\n    stacks,\n    content,\n    is_show,\n    is_featured\n  }\n': ProjectBySlugQueryResult;
   }
 }

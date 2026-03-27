@@ -1,16 +1,18 @@
 import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { SocialMediaItem } from "@/@types/contact";
+import { useTranslations } from "next-intl";
 
 export default function ContactCard({
   title,
-  description,
+  name,
   href,
   icon,
   accentColor,
   hoverBorder,
   glowColor,
 }: SocialMediaItem) {
+  const t = useTranslations("ContactPage.card");
   return (
     <Link
       href={href}
@@ -43,7 +45,7 @@ export default function ContactCard({
           <ArrowUpRight className="h-3.5 w-3.5 dark:text-neutral-600 text-neutral-600 transition-all duration-300 group-hover:translate-x-0.5 group-hover:-translate-y-0.5 group-hover:text-neutral-400" />
         </div>
         <p className="text-xs leading-relaxed dark:text-neutral-500 text-neutral-600 transition-colors duration-300 dark:group-hover:text-neutral-400">
-          {description}
+          {t(`${name}.description`)}
         </p>
       </div>
     </Link>

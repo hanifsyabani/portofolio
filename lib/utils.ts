@@ -71,3 +71,15 @@ export function formatDuration(startDate: string, endDate: string | null): strin
 
   return `${startStr} – ${endStr} · ${durationStr}`;
 }
+
+// <T> → generic type (bisa string, number, dll)
+export function localizedValue<T>(
+  field: { en?: T; id?: T } | undefined | null,
+  locale: string
+): T | undefined {
+  if (!field) return undefined;
+
+  // sama aj kek field[locale]
+  const value = (field as Record<string, T | undefined>)[locale];
+  return value ?? field.en;
+}
