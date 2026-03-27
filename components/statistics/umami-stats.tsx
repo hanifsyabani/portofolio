@@ -10,9 +10,11 @@ import SectionHeading from "../ui/section-heading";
 import SectionSubHeading from "../ui/section-sub-heading";
 import { useQuery } from "@tanstack/react-query";
 import { GetStatsUmami } from "@/service/umami";
+import { useTranslations } from "next-intl";
 
 
 export default function UmamiStats() {
+  const t = useTranslations("StatisticsPage");
   const {data: dataUmami, isLoading, error} = useQuery({
     queryFn: () => GetStatsUmami(),
     queryKey:["umami-stats"]
@@ -23,9 +25,9 @@ export default function UmamiStats() {
     <section className="space-y-4">
       <div className="flex flex-col justify-between gap-4 md:flex-row md:items-end mb-6">
         <div className="space-y-2">
-          <SectionHeading title="Traffic Audience" icon={<SiUmami />} />
+          <SectionHeading title={t("umami.title")} icon={<SiUmami />} />
           <SectionSubHeading>
-            <p>My personal website traffic and analytics.</p>
+            <p>{t("umami.sub_title")}</p>
           </SectionSubHeading>
         </div>
 
@@ -33,7 +35,7 @@ export default function UmamiStats() {
 
       {error ? (
         <div className="p-4 rounded-xl border border-red-200 bg-red-50 text-red-600 dark:border-red-900 dark:bg-red-900/10 dark:text-red-400 text-sm">
-          Failed to load Umami data.
+          {t("umami.error")}
         </div>
       ) : isLoading || !dataUmami ? (
         <UmamiSkeleton />

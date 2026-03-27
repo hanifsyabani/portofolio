@@ -3,6 +3,7 @@ import Link from "next/link";
 import { cn } from "@/lib/utils";
 import ThemeToggle from "./theme-toggle";
 import { MdVerified } from "react-icons/md";
+import IntlToggle from "./intl-toggle";
 
 
 export default function ProfileHeader() {
@@ -41,7 +42,7 @@ export default function ProfileHeader() {
             </div>
 
             <div className="justify-between gap-6 lg:mt-4 flex">
-                {/* <IntlToggle /> */}
+                <IntlToggle />
                 <ThemeToggle />
             </div>
         </div>

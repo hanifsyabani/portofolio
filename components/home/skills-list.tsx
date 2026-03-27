@@ -1,16 +1,20 @@
+"use client";
+
 import { BiCodeAlt } from "react-icons/bi";
 import SectionHeading from "../ui/section-heading";
 import SectionSubHeading from "../ui/section-sub-heading";
 import SkillCard from "./skill-card";
 import { skillCategories } from "@/constants/stacks";
+import { useTranslations } from "next-intl";
 
 
 export default function Skills() {
+    const t = useTranslations("HomePage");
     return (
         <div className="space-y-12">
             <div>
-                <SectionHeading title="Keahlian" icon={<BiCodeAlt />} />
-                <SectionSubHeading>Kemampuan profesional saya.</SectionSubHeading>
+                <SectionHeading title={t("skills.title")} icon={<BiCodeAlt />} />
+                <SectionSubHeading>{t("skills.sub_title")}</SectionSubHeading>
             </div>
 
             <div className="space-y-12">

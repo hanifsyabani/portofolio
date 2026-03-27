@@ -2,6 +2,7 @@
 
 import clsx from "clsx";
 import { useState } from "react";
+import { useTranslations } from "next-intl";
 
 interface Contribution {
   date: string;
@@ -26,6 +27,7 @@ interface CalendarProps {
 }
 
 export default function ContributionCalendar({ weeks = [], months = [], colors = [] }: CalendarProps) {
+  const t = useTranslations("StatisticsPage");
   const [selectContribution, setSelectContribution] = useState<{
     count: number | null;
     date: string | null;
@@ -114,7 +116,7 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
       <div className="mt-4 flex flex-col md:flex-row items-center justify-between gap-3 text-sm">
         <div className="flex items-center gap-2">
           <span className="dark:text-neutral-400">
-            Less
+            {t("github.less")}
           </span>
           <ul className="flex gap-1">
             <li className="h-[10px] w-[10px] rounded-sm bg-neutral-300 dark:bg-neutral-800" />
@@ -126,7 +128,7 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
               />
             ))}
           </ul>
-          <span className="dark:text-neutral-400">More</span>
+          <span className="dark:text-neutral-400">{t("github.more")}</span>
         </div>
 
         <div
@@ -138,7 +140,7 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
           {selectContribution?.date ? (
             <span>
               <span className="font-medium text-neutral-900 dark:text-neutral-100">{selectContribution.count}</span>{" "}
-              {selectContribution.count === 1 ? "contribution" : "contributions"} on{" "}
+              {selectContribution.count === 1 ? t("github.contribution") : t("github.contributions")} {t("github.on")}{" "}
               <span className="font-medium text-neutral-900 dark:text-neutral-100">{selectContribution.date}</span>
             </span>
           ) : (

@@ -9,10 +9,12 @@ import Menu from "./menu";
 import Copyright from "../ui/copyright";
 import { usePathname } from "next/navigation";
 import RotatingText from "../ui/rotating-text";
+import { useTranslations } from "next-intl";
 
 export default function MobileMenu() {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
+    const t = useTranslations("MobileMenu");
 
     // Close menu when route changes
     useEffect(() => {
@@ -77,7 +79,7 @@ export default function MobileMenu() {
                         >
                             <div className="p-6 flex-1 flex flex-col">
                                 <div className="flex justify-between items-center mb-6">
-                                    <h2 className="font-bold text-xl">Menu</h2>
+                                    <h2 className="font-bold text-xl">{t("menu")}</h2>
                                     <button
                                         onClick={() => setIsOpen(false)}
                                         className="p-2 bg-neutral-100 dark:bg-neutral-800 text-neutral-600 dark:text-neutral-400 rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-700 transition-colors"

@@ -10,17 +10,18 @@ import { Label } from "../ui/label";
 import { Textarea } from "../ui/textarea";
 import { useForm } from 'react-hook-form';
 import { zodResolver } from '@hookform/resolvers/zod';
+import { useTranslations } from "next-intl";
 
-
-const schema = z.object({
-  name: z.string().min(1, "Name is required"),
-  email: z.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, "Invalid email"),
-  message: z.string().min(1, "Message is required"),
-})
-type FormFields = z.infer<typeof schema>
 
 export default function ContactForm() {
+  const t = useTranslations("ContactPage");
 
+  const schema = z.object({
+    name: z.string().min(1, t("form.error_name")),
+    email: z.string().regex(/^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/, t("form.error_email")),
+    message: z.string().min(1, t("form.error_message")),
+  })
+  type FormFields = z.infer<typeof schema>
 
   const {
     handleSubmit,
@@ -34,7 +35,7 @@ export default function ContactForm() {
   const { mutate: postMessage, isPending } = useMutation({
     mutationFn: (data: FormFields) => PostMessage(data),
     onSuccess: () => {
-      toast.success("Message sent successfully")
+      toast.success(t("form.success"))
       reset()
     }, onError: (error: any) => {
       toast.error(error.message)
@@ -54,10 +55,10 @@ export default function ContactForm() {
     <div className="space-y-5">
       <div>
         <h3 className="text-sm font-semibold uppercase tracking-wider text-blue-400">
-          Send a Message
+          {t("form.title")}
         </h3>
         <p className="mt-1 text-xs text-neutral-500">
-          Have a question or want to work together? Fill out the form below.
+          {t("form.sub_title")}
         </p>
       </div>
 
@@ -65,12 +66,12 @@ export default function ContactForm() {
         <div className="flex flex-col gap-4 sm:flex-row">
           <div className="flex-1 space-y-1.5">
             <Label htmlFor="contact-name" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
-              Name
+              {t("form.name")}
             </Label>
             <Input
               id="contact-name"
               type="text"
-              placeholder="Your name"
+              placeholder={t("form.name_placeholder")}
               className={`${inputBase} ${errors.name ? "border-red-400/50" : ""}`}
               {...register("name")}
             />
@@ -81,12 +82,12 @@ export default function ContactForm() {
 
           <div className="flex-1 space-y-1.5">
             <Label htmlFor="contact-email" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
-              Email
+              {t("form.email")}
             </Label>
             <Input
               id="contact-email"
               type="email"
-              placeholder="you@example.com"
+              placeholder={t("form.email_placeholder")}
               className={`${inputBase} ${errors.email ? "border-red-400/50" : ""}`}
               {...register("email")}
             />
@@ -98,12 +99,12 @@ export default function ContactForm() {
 
         <div className="space-y-1.5">
           <Label htmlFor="contact-message" className="text-xs font-medium dark:text-neutral-400 text-neutral-600">
-            Message
+            {t("form.message")}
           </Label>
           <Textarea
             id="contact-message"
             rows={8}
-            placeholder="Tell me about your project, idea, or just say hi..."
+            placeholder={t("form.message_placeholder")}
             className={`${inputBase} h-20 ${errors.message ? "border-red-400/50" : ""}`}
             {...register("message")}
           />
@@ -122,7 +123,7 @@ export default function ContactForm() {
           ) : (
             <>
               <Send className="h-4 w-4 transition-transform duration-300 group-hover/btn:translate-x-0.5 group-hover/btn:-translate-y-0.5" />
-              <span>Send Message</span>
+              <span>{t("form.submit")}</span>
             </>
           )}
         </button>

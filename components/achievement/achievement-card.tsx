@@ -3,13 +3,17 @@
 import { useState } from "react";
 import Image from "next/image";
 import { Achievement } from "@/@types/sanity.types";
-import { urlForImage } from "@/lib/utils";
+import { localizedValue, urlForImage } from "@/lib/utils";
 import { ArrowRight, Award } from "lucide-react";
 import AchievementDetailDialog from "./achievement-detail-dialog";
+import { useTranslations, useLocale } from "next-intl";
 
 export default function AchievementCard(achievement: Achievement) {
   const [dialogOpen, setDialogOpen] = useState(false);
+  const t = useTranslations("AchievementDetail");
+  const locale = useLocale();
 
+  const name = localizedValue(achievement.name, locale) || "";
   const imageUrl = urlForImage(achievement.image)?.url() as string;
 
   return (
@@ -21,13 +25,13 @@ export default function AchievementCard(achievement: Achievement) {
         <div className="relative h-48 w-full overflow-hidden bg-neutral-800/40">
           <Image
             src={imageUrl}
-            alt={achievement.name || "Achievement"}
+            alt={name || "Achievement"}
             fill
             className="object-cover object-center transition-transform duration-500 group-hover:scale-105"
           />
 
           <div className="absolute inset-0 flex items-center justify-center gap-2 bg-black/60 opacity-0 transition-all duration-300 group-hover:opacity-100">
-            <span className="text-sm font-medium text-white">View Detail</span>
+            <span className="text-sm font-medium text-white">{t("view_detail")}</span>
             <ArrowRight className="h-4 w-4 text-white" />
           </div>
         </div>
@@ -39,7 +43,7 @@ export default function AchievementCard(achievement: Achievement) {
             </p>
           )}
           <h3 className="line-clamp-2 text-sm font-semibold leading-snug dark:text-neutral-100 text-neutral-900 transition-colors duration-300 group-hover:text-blue-400">
-            {achievement.name}
+            {name}
           </h3>
 
           <p className="text-xs dark:text-neutral-400 text-neutral-600 transition-colors duration-300 group-hover:text-neutral-300">

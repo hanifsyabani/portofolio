@@ -6,17 +6,19 @@ import SectionSubHeading from "../ui/section-sub-heading";
 import { MdEmojiEvents } from "react-icons/md";
 import AchievementCard from "./achievement-card";
 import { Achievement } from "@/@types/sanity.types";
+import { useTranslations } from "next-intl";
 
 interface AchievementListProps {
     achievementsData: Achievement[]
 }
 
 export default function AchievementList({ achievementsData }: AchievementListProps) {
+    const t = useTranslations("AchievementsPage");
     return (
         <section>
-            <SectionHeading title="Pencapaian" icon={<MdEmojiEvents />} className="mb-2"/>
+            <SectionHeading title={t("title")} icon={<MdEmojiEvents />} className="mb-2"/>
             <SectionSubHeading>
-                Beberapa pencapaian yang pernah saya raih selama perjalanan karir saya.
+                {t("description")}
             </SectionSubHeading>
 
             <div className="my-10">
@@ -27,17 +29,16 @@ export default function AchievementList({ achievementsData }: AchievementListPro
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
                     {achievementsData.map((achievement: Achievement) => (
                         <AchievementCard
-                            key={achievement.name}
+                            key={achievement._id}
                             {...achievement}
                         />
                     ))}
                 </div>
             ) : (
                 <div className="text-center py-12">
-                    <p className="text-neutral-400">Tidak ada pencapaian untuk ditampilkan.</p>
+                    <p className="text-neutral-400">{t("no_data")}</p>
                 </div>
             )}
         </section>
     );
 }
-

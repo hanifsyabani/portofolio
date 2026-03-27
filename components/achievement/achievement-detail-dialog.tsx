@@ -7,7 +7,7 @@ import {
 } from "@/components/ui/dialog";
 import Image from "next/image";
 import { Achievement } from "@/@types/sanity.types";
-import { urlForImage, formatDate } from "@/lib/utils";
+import { urlForImage, formatDate, localizedValue } from "@/lib/utils";
 import {
   Award,
   Calendar,
@@ -18,6 +18,7 @@ import {
   Clock,
 } from "lucide-react";
 import Breakline from "../ui/breakline";
+import { useTranslations, useLocale } from "next-intl";
 
 interface AchievementDetailDialogProps {
   achievement: Achievement;
@@ -25,27 +26,7 @@ interface AchievementDetailDialogProps {
   onOpenChange: (open: boolean) => void;
 }
 
-function DetailRow({
-  icon,
-  label,
-  value,
-}: {
-  icon: React.ReactNode;
-  label: string;
-  value: React.ReactNode;
-}) {
-  return (
-    <div className="flex items-start gap-3">
-      <span className="mt-0.5 text-blue-400">{icon}</span>
-      <div className="min-w-0 flex-1">
-        <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-500">
-          {label}
-        </p>
-        <div className="mt-0.5 text-sm dark:text-neutral-200 text-neutral-600">{value}</div>
-      </div>
-    </div>
-  );
-}
+
 
 export default function AchievementDetailDialog({
   achievement,
@@ -53,17 +34,21 @@ export default function AchievementDetailDialog({
   onOpenChange,
 }: AchievementDetailDialogProps) {
   const imageUrl = urlForImage(achievement.image)?.url() as string;
+  const t = useTranslations("AchievementDetail");
+  const locale = useLocale();
+
+  const name = localizedValue(achievement.name, locale) || "";
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-white p-0 max-w-6xl sm:rounded-2xl">
-        <DialogTitle className="sr-only">{achievement.name}</DialogTitle>
+        <DialogTitle className="sr-only">{name}</DialogTitle>
 
         <div className="lg:flex flex-col md:flex-row">
           <div className="relative w-full h-full  flex items-center justify-center bg-neutral-900/80 md:w-[70%]">
             <Image
               src={imageUrl}
-              alt={achievement.name || "Achievement Certificate"}
+              alt={name || "Achievement Certificate"}
               fill
               className="object-cover"
             />
@@ -86,7 +71,7 @@ export default function AchievementDetailDialog({
             </div>
 
             <h2 className="text-lg font-bold leading-snug dark:text-neutral-100 text-neutral-900">
-              {achievement.name}
+              {name}
             </h2>
 
             {achievement.issuingOrganization && (
@@ -100,7 +85,7 @@ export default function AchievementDetailDialog({
               {achievement.credentialId && (
                 <DetailRow
                   icon={<Hash className="h-4 w-4" />}
-                  label="Credential ID"
+                  label={t("credential_id")}
                   value={
                     <span className="font-mono text-xs">
                       {achievement.credentialId}
@@ -112,7 +97,7 @@ export default function AchievementDetailDialog({
               {achievement.issuingOrganization && (
                 <DetailRow
                   icon={<Building2 className="h-4 w-4" />}
-                  label="Issuing Organization"
+                  label={t("issuing_organization")}
                   value={achievement.issuingOrganization}
                 />
               )}
@@ -120,7 +105,7 @@ export default function AchievementDetailDialog({
               {achievement.issueDate && (
                 <DetailRow
                   icon={<Calendar className="h-4 w-4" />}
-                  label="Issue Date"
+                  label={t("issue_date")}
                   value={formatDate(achievement.issueDate)}
                 />
               )}
@@ -128,7 +113,7 @@ export default function AchievementDetailDialog({
               {achievement.expirationDate && (
                 <DetailRow
                   icon={<Clock className="h-4 w-4" />}
-                  label="Expiration Date"
+                  label={t("expiration_date")}
                   value={formatDate(achievement.expirationDate)}
                 />
               )}
@@ -143,12 +128,35 @@ export default function AchievementDetailDialog({
                 className="mt-6 inline-flex w-fit items-center gap-2 rounded-full border border-blue-400/30 bg-blue-400/10 px-4 py-2.5 text-sm font-semibold text-blue-400 transition-all duration-300 hover:scale-[1.02] hover:bg-blue-400/20 hover:shadow-lg hover:shadow-blue-400/10"
               >
                 <ExternalLink className="h-4 w-4" />
-                View Credential
+                {t("view_credential")}
               </a>
             )}
           </div>
         </div>
       </DialogContent>
     </Dialog>
+  );
+}
+
+
+function DetailRow({
+  icon,
+  label,
+  value,
+}: {
+  icon: React.ReactNode;
+  label: string;
+  value: React.ReactNode;
+}) {
+  return (
+    <div className="flex items-start gap-3">
+      <span className="mt-0.5 text-blue-400">{icon}</span>
+      <div className="min-w-0 flex-1">
+        <p className="text-[11px] font-medium uppercase tracking-wider text-neutral-500">
+          {label}
+        </p>
+        <div className="mt-0.5 text-sm dark:text-neutral-200 text-neutral-600">{value}</div>
+      </div>
+    </div>
   );
 }

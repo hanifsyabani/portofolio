@@ -10,8 +10,10 @@ import { SiGithub } from "react-icons/si";
 import Breakline from "../ui/breakline";
 import ContributionCalendar from "./contribution-calendar";
 import GithubStatsCard from "./github-stats-card";
+import { useTranslations } from "next-intl";
 
 export default function GithubStats() {
+  const t = useTranslations("StatisticsPage");
 
   const { data, isLoading } = useQuery({
     queryFn: () => GetStatsGithub(),
@@ -32,9 +34,9 @@ export default function GithubStats() {
 
   return (
     <section >
-      <SectionHeading title="Github Activity" icon={<SiGithub />} className="mb-2" />
+      <SectionHeading title={t("github.title")} icon={<SiGithub />} className="mb-2" />
       <SectionSubHeading>
-        Here are some of my statistics and contributions on GitHub.
+        {t("github.sub_title")}
       </SectionSubHeading>
       <div className="my-10">
         <Breakline />
@@ -42,9 +44,9 @@ export default function GithubStats() {
 
       <div className="space-y-8">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-          <GithubStatsCard title="Total Contributions" data={data.contributionsCollection.contributionCalendar.totalContributions} />
-          <GithubStatsCard title="Repositories" data={data.repositories.totalCount} />
-          <GithubStatsCard title="Total Stars" data={totalStars} />
+          <GithubStatsCard title={t("github.total_contributions")} data={data.contributionsCollection.contributionCalendar.totalContributions} />
+          <GithubStatsCard title={t("github.repositories")} data={data.repositories.totalCount} />
+          <GithubStatsCard title={t("github.total_stars")} data={totalStars} />
 
         </div>
 
@@ -59,7 +61,7 @@ export default function GithubStats() {
         </div>
 
         <div>
-          <h2 className="mb-4 text-xl font-bold">Top Repositories</h2>
+          <h2 className="mb-4 text-xl font-bold">{t("github.top_repositories")}</h2>
           <div className="space-y-3 grid lg:grid-cols-2 gap-4">
             {topRepos.map((repo) => (
               <a

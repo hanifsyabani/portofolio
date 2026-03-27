@@ -11,10 +11,11 @@ import {
   Calendar,
   ChevronDown,
 } from "lucide-react";
-import { formatDuration, urlForImage } from "@/lib/utils";
+import { formatDuration, localizedValue, urlForImage } from "@/lib/utils";
 import { Collapsible, CollapsibleContent, CollapsibleTrigger } from "../ui/collapsible";
 import { Career } from "@/@types/sanity.types";
 import Link from "next/link";
+import { useLocale } from "next-intl";
 
 
 function BulletItem({ text }: { text: string }) {
@@ -53,6 +54,14 @@ function SectionBlock({ icon, title, items }: SectionBlockProps) {
 }
 
 export default function CareerCard({ career }: { career: Career }) {
+  const locale = useLocale();
+
+  const position = localizedValue(career.position, locale) || "";
+  const location = localizedValue(career.location, locale) || "";
+  const industry = localizedValue(career.industry, locale);
+  const responsibilities = localizedValue(career.responsibilities, locale) || [];
+  const lessonsLearned = localizedValue(career.lessonsLearned, locale) || [];
+  const impact = localizedValue(career.impact, locale) || [];
 
   const duration = useMemo(
     () => formatDuration(career.startDate || "", career.endDate || ""),
@@ -81,7 +90,7 @@ export default function CareerCard({ career }: { career: Career }) {
           <div className="flex flex-col gap-1 sm:flex-row sm:items-start sm:justify-between">
             <div className="min-w-0">
               <h3 className="text-lg font-bold dark:text-neutral-100 text-neutral-900 leading-snug">
-                {career.position}
+                {position}
               </h3>
               <div className="lg:mt-1 mt-2 flex flex-wrap space-y-2 lg:space-y-0 items-center lg:gap-x-2 lg:gap-y-1 text-sm text-neutral-400">
                 {career.link ? (
@@ -99,7 +108,7 @@ export default function CareerCard({ career }: { career: Career }) {
                 <span className="text-neutral-600">·</span>
                 <span className="inline-flex items-center gap-1 dark:text-neutral-300 text-neutral-900">
                   <MapPin className="h-3 w-3" />
-                  {career.location}
+                  {location}
                 </span>
               </div>
             </div>
@@ -116,9 +125,9 @@ export default function CareerCard({ career }: { career: Career }) {
             <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium dark:text-neutral-400 text-neutral-800">
               {career.locationType}
             </span>
-            {career.industry && (
+            {industry && (
               <span className="rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium dark:text-neutral-400 text-neutral-800">
-                {career.industry}
+                {industry}
               </span>
             )}
           </div>
@@ -132,29 +141,28 @@ export default function CareerCard({ career }: { career: Career }) {
         </CollapsibleTrigger>
         <CollapsibleContent className="mt-2">
           <div className="relative z-10 space-y-6">
-            {career.responsibilities && career.responsibilities.length > 0 && (
+            {responsibilities.length > 0 && (
               <SectionBlock
                 icon={<ClipboardList className="h-4 w-4" />}
                 title="Responsibilities"
-                items={career.responsibilities}
+                items={responsibilities}
               />
             )}
 
-            {((career.lessonsLearned && career.lessonsLearned.length > 0) ||
-              (career.impact && career.impact.length > 0)) && (
+            {(lessonsLearned.length > 0 || impact.length > 0) && (
                 <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
-                  {career.lessonsLearned && career.lessonsLearned.length > 0 && (
+                  {lessonsLearned.length > 0 && (
                     <SectionBlock
                       icon={<Lightbulb className="h-4 w-4" />}
                       title="What I Learned"
-                      items={career.lessonsLearned}
+                      items={lessonsLearned}
                     />
                   )}
-                  {career.impact && career.impact.length > 0 && (
+                  {impact.length > 0 && (
                     <SectionBlock
                       icon={<Zap className="h-4 w-4" />}
                       title="Impact"
-                      items={career.impact}
+                      items={impact}
                     />
                   )}
                 </div>

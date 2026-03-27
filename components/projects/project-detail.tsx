@@ -1,12 +1,15 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import { Project } from "@/@types/sanity.types";
-import { urlForImage } from "@/lib/utils";
+import { localizedValue, urlForImage } from "@/lib/utils";
 import { ArrowLeft, ExternalLink, Pin } from "lucide-react";
 import { PortableText } from "@portabletext/react";
 import { SiGithub } from "react-icons/si";
 import { portableTextComponents } from "../ui/portable-text";
 import { STACKSPROJECTS } from "@/constants/stacks";
+import { useTranslations, useLocale } from "next-intl";
 
 interface ProjectDetailProps {
   projectData: Project;
@@ -14,6 +17,11 @@ interface ProjectDetailProps {
 
 export default function ProjectDetail({ projectData }: ProjectDetailProps) {
   const imageUrl = urlForImage(projectData.image)?.url() as string;
+  const t = useTranslations("ProjectsPage");
+  const locale = useLocale();
+
+  const description = localizedValue(projectData.description, locale);
+  const content = localizedValue(projectData.content, locale);
 
   return (
     <section>
@@ -22,7 +30,7 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
         className="mb-8 inline-flex items-center gap-2 text-sm dark:text-neutral-400 text-neutral-600 transition-colors duration-300 hover:text-blue-400"
       >
         <ArrowLeft className="h-4 w-4" />
-        <span>Back to Projects</span>
+        <span>{t("detail.back")}</span>
       </Link>
 
       {imageUrl && (
@@ -44,14 +52,14 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
         {projectData.is_featured && (
           <span className="mt-1 inline-flex shrink-0 items-center gap-1 rounded-full bg-amber-400/90 px-2.5 py-1 text-[11px] font-semibold text-neutral-900">
             <Pin className="h-3 w-3" />
-            Featured
+            {t("featured")}
           </span>
         )}
       </div>
 
-      {projectData.description && (
+      {description && (
         <p className="mb-6 text-sm leading-relaxed dark:text-neutral-400 text-neutral-600">
-          {projectData.description}
+          {description}
         </p>
       )}
 
@@ -80,7 +88,7 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
             className="inline-flex items-center gap-2 rounded-xl border border-white/10 bg-white/[0.04] px-4 py-2.5 text-sm font-medium text-neutral-300 transition-all duration-300 hover:border-amber-400/25 hover:bg-amber-400/[0.06] hover:text-amber-400"
           >
             <SiGithub className="h-4 w-4" />
-            Source Code
+            {t("detail.source_code")}
           </Link>
         )}
         {projectData.link_demo && (
@@ -91,13 +99,13 @@ export default function ProjectDetail({ projectData }: ProjectDetailProps) {
             className="inline-flex items-center gap-2 rounded-xl border border-amber-400/30 bg-amber-400/[0.08] px-4 py-2.5 text-sm font-medium text-amber-400 transition-all duration-300 hover:bg-amber-400/[0.15] hover:shadow-[0_4px_20px_-6px_rgba(245,190,60,0.15)]"
           >
             <ExternalLink className="h-4 w-4" />
-            Live Demo
+            {t("detail.live_demo")}
           </Link>
         )}
       </div>
 
-      {projectData.content && (
-        <PortableText value={projectData.content} components={portableTextComponents} />
+      {content && (
+        <PortableText value={content} components={portableTextComponents} />
       )}
     </section>
   );
