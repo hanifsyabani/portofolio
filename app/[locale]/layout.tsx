@@ -12,6 +12,7 @@ import { notFound } from "next/navigation";
 import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages } from "next-intl/server";
+import Script from "next/script";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -64,9 +65,17 @@ export default async function RootLayout({
   const messages = await getMessages()
   return (
     <html lang={locale} suppressHydrationWarning={true} >
+      <head>
+        <Script
+          defer
+          src="https://cloud.umami.is/script.js"
+          data-website-id="383586cf-9bf1-4a89-b292-ee3e0946d626"
+        />
+      </head>
       <body
         className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}
       >
+
         <NextTopLoader
           initialPosition={0.08}
           crawlSpeed={200}

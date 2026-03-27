@@ -10,10 +10,10 @@ export default function ProfileHeader() {
     return (
         <div
             className={cn(
-                "flex w-full grow  items-center gap-4 flex-col lg:gap-0.5",
+                "lg:flex w-full grow items-center gap-4 flex-col lg:gap-0.5",
             )}
         >
-            <div className="flex lg:flex-col items-center gap-4">
+            <div className="lg:flex lg:flex-col items-center gap-4">
                 <div className="lg:w-24 lg:h-24 w-20 h-20">
                     <Image
                         src={"/images/hanif.jpg"}
@@ -24,16 +24,14 @@ export default function ProfileHeader() {
                     />
                 </div>
 
-                <div className="mt-1 flex items-center gap-2 lg:mt-4">
+                <div className="mt-1 flex items-center gap-2 lg:mt-4 my-2 lg:my-0">
                     <Link href="/" passHref>
                         <h2 className="grow lg:text-lg text-sm font-medium lg:text-center">
                             Muhammad Hanif Sya'bani
                         </h2>
                     </Link>
 
-                    {/* <Tooltip title="Verified"> */}
                     <MdVerified size={18} className="text-blue-400" />
-                    {/* </Tooltip> */}
                 </div>
             </div>
 
@@ -41,7 +39,7 @@ export default function ProfileHeader() {
                 @muhanifs_
             </div>
 
-            <div className="justify-between gap-6 lg:mt-4 flex">
+            <div className="lg:justify-between justify-start gap-2 lg:gap-6 mt-4 flex">
                 <IntlToggle />
                 <ThemeToggle />
             </div>

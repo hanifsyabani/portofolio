@@ -33,7 +33,7 @@ export default function MobileMenu() {
     }, [isOpen]);
 
     return (
-        <div className="lg:hidden w-full mb-8 sticky top-0 z-4">
+        <div className="lg:hidden w-full mb-8 sticky top-0 z-100">
             <nav className="flex justify-between items-center px-4 py-4 0 bg-white/80 dark:bg-neutral-950/80 backdrop-blur-md rounded-2xl border border-neutral-200 dark:border-neutral-800 shadow-sm">
                 <div className="text-lg font-bold">
                     <RotatingText
@@ -46,7 +46,7 @@ export default function MobileMenu() {
                         staggerDuration={0.025}
                         splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
                         transition={{ type: "spring", damping: 30, stiffness: 400 }}
-                        rotationInterval={7000}
+                        rotationInterval={5000}
                     />
                 </div>
                 <button
