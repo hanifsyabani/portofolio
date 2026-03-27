@@ -58,8 +58,8 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
 
   return (
     <>
-      <div className="relative flex flex-col">
-        <ul className="flex justify-end gap-[3px] overflow-hidden text-xs dark:text-neutral-400 md:justify-start">
+      <div className="relative flex flex-col overflow-x-auto">
+        <ul className="flex justify-end gap-[3px] text-xs dark:text-neutral-400 md:justify-start">
           {mappedMonths.map((month) => (
             <li
               key={String(month.firstDay)}
@@ -71,7 +71,7 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
           ))}
         </ul>
 
-        <div className="flex justify-start gap-[2.9px] overflow-hidden">
+        <div className="flex justify-start gap-[2.9px]">
           {weeks.map((week) => (
             <div key={String(week.firstDay)}>
               {week.contributionDays.map((contribution) => {
