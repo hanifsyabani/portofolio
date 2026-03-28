@@ -9,6 +9,11 @@ import AuthButton from "../auth/auth-button";
 import { useQuery } from "@tanstack/react-query";
 import { GetCurrentUser } from "@/service/auth";
 import Loader from "../ui/loader";
+import Room from "./room";
+import { Label } from "../ui/label";
+import { Input } from "../ui/input";
+import { Textarea } from "../ui/textarea";
+import { Button } from "../ui/button";
 
 export default function ChatRoom() {
     const t = useTranslations("ChatRoomPage");
@@ -19,7 +24,7 @@ export default function ChatRoom() {
     })
 
     if (isLoading) {
-        return <Loader/>
+        return <Loader />
     }
 
     return (
@@ -32,13 +37,23 @@ export default function ChatRoom() {
             <div className="my-10">
                 <Breakline />
             </div>
-            
+
+            <Room />
+
             {user?.aud === "authenticated" ? (
-                <div>
-                    <h1>{user.email}</h1>
+                <div className="space-y-3">
+                    <Label>
+
+                    </Label>
+                    <Textarea placeholder="Add ur message here" />
+                    <div className="flex justify-end">
+                        <Button className="bg-blue-400 text-white cursor-pointer hover:bg-blue-500">
+                            Submit
+                        </Button>
+                    </div>
                 </div>
             ) : (
-                <AuthButton  />
+                <AuthButton />
             )}
         </section>
     )
