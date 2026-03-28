@@ -12,7 +12,7 @@ export default function IntlToggle() {
 
     const switchLocale = (newLocale: 'en' | 'id') => {
         startTransition(() => {
-            router.replace(pathname, { locale: newLocale })
+            router.replace({pathname}, { locale: newLocale })
         })
     }
 
@@ -43,6 +43,7 @@ export default function IntlToggle() {
                     EN
                 </button>
             </div>
+
             {/* mobile */}
             <button
                 onClick={() => switchLocale(locale === 'en' ? 'id' : 'en')}

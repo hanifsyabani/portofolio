@@ -114,7 +114,8 @@
     }
   },
   "ChatRoomPage": {
-    "title": "Ruang Obrolan"
+    "title": "Ruang Obrolan",
+    "description": "Tempat untuk mengobrol dengan saya"
   },
   "AchievementDetail": {
     "credential_id": "ID Kredensial",

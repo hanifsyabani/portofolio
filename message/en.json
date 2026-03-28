@@ -111,7 +111,8 @@
     }
   },
   "ChatRoomPage": {
-    "title": "Chat Room"
+    "title": "Chat Room",
+    "description": "Place to chat with me"
   },
   "AchievementDetail": {
     "credential_id": "Credential ID",
