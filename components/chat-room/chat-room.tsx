@@ -47,13 +47,13 @@ export default function ChatRoom() {
         queryFn: () => GetCurrentUser(),
     })
 
-    const {data: dataChatRoom,isLoading: chatRoomLoading, refetch} = useQuery({
+    const { data: dataChatRoom, isLoading: chatRoomLoading, refetch } = useQuery({
         queryKey: ["dataChatRoom"],
         queryFn: () => GetAllChatRoom(),
     })
 
 
-    const {mutate: postChat,isPending}= useMutation({
+    const { mutate: postChat, isPending } = useMutation({
         mutationFn: (data: ChatPayload) => PostChat(data, user?.id!),
         onSuccess: () => {
             toast.success(t("form.success"))
@@ -63,11 +63,11 @@ export default function ChatRoom() {
             toast.error(error.message)
         }
     })
- 
+
     function onSubmit(data: FormFields) {
-        const payload : ChatPayload = {
+        const payload: ChatPayload = {
             ...data,
-            name: user?.user_metadata.full_name ,
+            name: user?.user_metadata.full_name,
             email: user?.email ?? "",
             avatar: user?.user_metadata.avatar_url ?? "",
         }
@@ -92,8 +92,18 @@ export default function ChatRoom() {
 
             {user?.aud === "authenticated" ? (
                 <form className="space-y-3" onSubmit={handleSubmit(onSubmit)}>
-                    
-                    <Textarea placeholder="Add ur message here..." {...register("message")} className="p-4" />
+
+                    <Textarea
+                        placeholder="Add ur message here..."
+                        {...register("message")}
+                        className="p-4"
+                        onKeyDown={(e) => {
+                            if (e.key === "Enter" && !e.shiftKey) {
+                                e.preventDefault()
+                                handleSubmit(onSubmit)()
+                            }
+                        }}
+                    />
                     {errors.message && (
                         <p className="text-[11px] text-red-400">{errors.message.message}</p>
                     )}
