@@ -28,6 +28,9 @@ model Contact {
 model ChatRoom {
   id String @id @default(uuid())
   userId String
+  name String 
+  email String
+  avatar String
   message String
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
