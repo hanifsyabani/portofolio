@@ -112,7 +112,22 @@
   },
   "ChatRoomPage": {
     "title": "Chat Room",
-    "description": "Place to chat with me"
+    "description": "Place to chat with me",
+    "form": {
+      "title": "Send a Message",
+      "sub_title": "Have a question or want to work together? Fill out the form below.",
+      "name": "Name",
+      "name_placeholder": "Your name",
+      "email": "Email",
+      "email_placeholder": "you@example.com",
+      "message": "Message",
+      "message_placeholder": "Tell me about your project, idea, or just say hi...",
+      "submit": "Send Message",
+      "success": "Message sent successfully",
+      "error_name": "Name is required",
+      "error_email": "Invalid email",
+      "error_message": "Message is required"
+    }
   },
   "AchievementDetail": {
     "credential_id": "Credential ID",

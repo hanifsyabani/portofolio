@@ -115,7 +115,22 @@
   },
   "ChatRoomPage": {
     "title": "Ruang Obrolan",
-    "description": "Tempat untuk mengobrol dengan saya"
+    "description": "Tempat untuk mengobrol dengan saya",
+    "form": {
+      "title": "Kirim Pesan",
+      "sub_title": "Punya pertanyaan atau ingin bekerja sama? Isi formulir di bawah ini.",
+      "name": "Nama",
+      "name_placeholder": "Nama Anda",
+      "email": "Email",
+      "email_placeholder": "email@contoh.com",
+      "message": "Pesan",
+      "message_placeholder": "Ceritakan tentang proyek, ide, atau sekedar menyapa...",
+      "submit": "Kirim Pesan",
+      "success": "Pesan berhasil dikirim",
+      "error_name": "Nama wajib diisi",
+      "error_email": "Email tidak valid",
+      "error_message": "Pesan wajib diisi"
+    }
   },
   "AchievementDetail": {
     "credential_id": "ID Kredensial",
