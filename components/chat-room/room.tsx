@@ -39,7 +39,7 @@ export default function Room({ data, userId }: Props) {
                 "items-start": !isMe,
               })}
             >
-              <div className="flex items-center mb-1 text-xs gap-1 lg:gap-2">
+              <div className="flex lg:flex-row flex-col lg:items-center mb-1 text-xs gap-1 lg:gap-2">
                 <span className="font-semibold text-neutral-700 dark:text-neutral-300">
                   {msg.user.name}
                 </span>
