@@ -6,60 +6,45 @@ const { api_key, endpoint, base_url, parameters, websites } = UMAMI_ACCOUNT;
 
 const website = websites[0];
 
-const getPageViewsByDataRange = async (website_id: string) => {
-  const url = `${base_url}/${website_id}${endpoint.page_views}`;
-
-  const response = await axios.get(url, {
-    headers: {
-      Accept: "application/json",
-      "x-umami-api-key": api_key || "",
-    },
-    params: parameters,
-  });
-
-  return response.data;
-};
-
-const getWebsiteStats = async (website_id: string) => {
-  const url = `${base_url}/${website_id}${endpoint.sessions}`;
-
-  const response = await axios.get(url, {
-    headers: {
-      Accept: "application/json",
-      "x-umami-api-key": api_key || "",
-    },
-    params: {
-      startAt: parameters.startAt,
-      endAt: parameters.endAt,
-    },
-  });
-
-  return response.data;
-};
 
 export async function GET() {
   try {
     if (!website?.website_id) {
       return NextResponse.json(
-        {
-          status: 404,
-          error: "Website ID not found",
-        },
+        { status: 404, error: "Website ID not found" },
         { status: 404 }
       );
     }
 
+    const params = {
+      ...parameters,
+      startAt: Date.now() - 7 * 24 * 60 * 60 * 1000,
+      endAt: Date.now(),
+    };
+
     const [pv, st] = await Promise.all([
-      getPageViewsByDataRange(website.website_id),
-      getWebsiteStats(website.website_id),
+      axios.get(`${base_url}/${website.website_id}${endpoint.page_views}`, {
+        headers: {
+          Accept: "application/json",
+          "x-umami-api-key": api_key || "",
+        },
+        params,
+      }),
+      axios.get(`${base_url}/${website.website_id}${endpoint.sessions}`, {
+        headers: {
+          Accept: "application/json",
+          "x-umami-api-key": api_key || "",
+        },
+        params,
+      }),
     ]);
 
     return NextResponse.json({
       status: 200,
       data: {
-        pageviews: pv?.pageviews || [],
-        sessions: pv?.sessions || [],
-        websiteStats: st || {
+        pageviews: pv.data?.pageviews || [],
+        sessions: st.data?.sessions || [], // ✅ FIX
+        websiteStats: st.data || {
           pageviews: { value: 0 },
           visitors: { value: 0 },
           visits: { value: 0 },
