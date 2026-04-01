@@ -72,6 +72,16 @@
       "contribution": "kontribusi",
       "contributions": "kontribusi",
       "on": "pada"
+    },
+    "wakatime": {
+      "title": "Aktivitas Pengkodean",
+      "sub_title": "Berikut adalah statistik pengkodean saya yang dilacak dari WakaTime.",
+      "error": "Gagal memuat data WakaTime.",
+      "languages": "Bahasa Teratas",
+      "editors": "Editor Teratas",
+      "operating_systems": "Sistem Operasi",
+      "total_time": "Total Waktu",
+      "daily_average": "Rata-rata Harian"
     }
   },
   "ContactPage": {

@@ -72,6 +72,16 @@
       "contribution": "contribution",
       "contributions": "contributions",
       "on": "on"
+    },
+    "wakatime": {
+      "title": "Coding Activity",
+      "sub_title": "Here are my coding statistics tracked by WakaTime.",
+      "error": "Failed to load WakaTime data.",
+      "languages": "Top Languages",
+      "editors": "Top Editors",
+      "operating_systems": "Operating Systems",
+      "total_time": "Total Time",
+      "daily_average": "Daily Average"
     }
   },
   "ContactPage": {
