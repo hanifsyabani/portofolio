@@ -34,8 +34,10 @@ export default function ProjectList({ projectsData }: ProjectListProps) {
 
             {sortedProjects.length > 0 ? (
                 <div className="grid grid-cols-1 gap-5 sm:grid-cols-2">
-                    {sortedProjects.map((project) => (
-                        <ProjectCard key={project._id} project={project} />
+                    {sortedProjects.map((project, index) => (
+                        <div data-aos="fade-up" data-aos-delay={index * 100} key={project._id}>
+                            <ProjectCard key={project._id} project={project} />
+                        </div>
                     ))}
                 </div>
             ) : (

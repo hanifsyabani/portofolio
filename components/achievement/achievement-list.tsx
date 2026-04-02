@@ -27,11 +27,13 @@ export default function AchievementList({ achievementsData }: AchievementListPro
 
             {achievementsData?.length > 0 ? (
                 <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-3">
-                    {achievementsData.map((achievement: Achievement) => (
+                    {achievementsData.map((achievement: Achievement, index: number) => (
+                        <div data-aos="fade-up" data-aos-delay={index * 100} key={achievement._id}>
                         <AchievementCard
                             key={achievement._id}
                             {...achievement}
                         />
+                        </div>
                     ))}
                 </div>
             ) : (
