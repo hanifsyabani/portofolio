@@ -2,6 +2,7 @@
   "HomePage": {
     "intro": "Hi, I'm Muhammad Hanif Sya'bani",
     "location": "Palembang, Indonesia",
+    "download_cv": "Download CV",
     "resume": {
       "paragraph_1": "A Computer Systems student at Universitas Sriwijaya with a passion for Machine Learning, Computer Vision, and modern web development. Currently a Student Researcher at AI-Medical Center of Excellence (AIMed CoE), developing multi-object tracking for pediatric heart ultrasound videos. Selected for Bangkit Academy 2024 as one of 4,636 from over 45,000 applicants, where I built HidroQu — a hydroponic monitoring app using transfer learning with MobileNetV2.",
       "paragraph_2": "Experienced as a Frontend Web Developer at PT Pertamina Hulu Rokan developing fiber optic analysis tools with Next.js and TypeScript, and actively contributed as a Frontend Developer at GDSC Universitas Sriwijaya building responsive web interfaces with React.js and Next.js."
