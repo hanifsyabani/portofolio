@@ -12,3 +12,12 @@ export async function GetCurrentUser() {
     }
 }
 
+export async function Logout() {
+    try {
+        const supabase = await createClient();
+        await supabase.auth.signOut();
+    } catch (error) {
+        throw error;
+    }
+}
+
