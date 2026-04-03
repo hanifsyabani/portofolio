@@ -12,7 +12,7 @@ export default function Skills() {
     const t = useTranslations("HomePage");
     return (
         <div className="space-y-12">
-            <div>
+            <div data-aos="fade-up">
                 <SectionHeading title={t("skills.title")} icon={<BiCodeAlt />} />
                 <SectionSubHeading>{t("skills.sub_title")}</SectionSubHeading>
             </div>
@@ -20,7 +20,7 @@ export default function Skills() {
             <div className="space-y-12">
                 <div className="grid grid-cols-1 gap-4 grid-cols-4 lg:grid-cols-8">
                     {skillCategories.map((category) => (
-                        <div key={category.name}>
+                        <div key={category.name} >
                             <SkillCard
                                 key={category.name}
                                 title={category.name || ""}
