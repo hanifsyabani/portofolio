@@ -115,11 +115,16 @@
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
   --accent-gold: oklch(0.82 0.14 90);
+  --selected-text: oklch(55.262% 0.23705 260.89);
 }
 
 @layer base {
   * {
     @apply border-border outline-ring/50;
+  }
+  ::selection {
+    background-color: var(--selected-text);
+    color: var(--foreground);
   }
   body {
     @apply bg-background text-foreground;
@@ -147,7 +152,12 @@
   .dark ::-webkit-scrollbar-thumb {
     background-color: theme("colors.neutral.400");
   }
-  
+
+  @media (pointer: fine) and (min-width: 1024px) {
+    *, *::before, *::after {
+      cursor: none !important;
+    }
+  }
 }
 
 

@@ -116,7 +116,19 @@ export const skillCategories: SkillCategory[] = [
         color: "from-yellow-300 to-orange-500",
         icon: <SiFirebase/>,
         description: "Realtime DB & Auth",
-    }
+    },
+    {
+        name: "Framer Motion",
+        color: "from-sky-300 to-orange-500",
+        icon: <SiFramer/>,
+        description: "Realtime DB & Auth",
+    },
+    {
+        name: "Go",
+        color: "from-blue-300 to-blue-500",
+        icon: <SiGo/>,
+        description: "Realtime DB & Auth",
+    },
 ];
 
 const iconSize = 30;

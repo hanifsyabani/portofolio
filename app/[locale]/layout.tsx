@@ -13,6 +13,7 @@ import { routing } from "@/i18n/routing";
 import { hasLocale, NextIntlClientProvider } from 'next-intl';
 import { getMessages } from "next-intl/server";
 import Script from "next/script";
+import CustomCursor from "@/components/ui/custom-cursor";
 
 const jetbrainsMono = JetBrains_Mono({
   variable: "--font-jetbrains-mono",
@@ -73,9 +74,9 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans`}
+        className={`${inter.variable} ${jetbrainsMono.variable} antialiased font-sans cursor-default lg:cursor-none`}
       >
-
+        <CustomCursor />
         <NextTopLoader
           initialPosition={0.08}
           crawlSpeed={200}

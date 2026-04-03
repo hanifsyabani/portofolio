@@ -10,8 +10,9 @@ import Copyright from "../ui/copyright";
 import { usePathname } from "next/navigation";
 import RotatingText from "../ui/rotating-text";
 import { useTranslations } from "next-intl";
+import LogoutButton from "./logout-button";
 
-export default function MobileMenu() {
+export default function MobileMenu({ isAuthStatus }: { isAuthStatus: string | undefined }) {
     const [isOpen, setIsOpen] = useState(false);
     const pathname = usePathname();
     const t = useTranslations("MobileMenu");
@@ -69,7 +70,7 @@ export default function MobileMenu() {
                             className="fixed inset-0 bg-black/60 backdrop-blur-sm z-50"
                             onClick={() => setIsOpen(false)}
                         />
-                        
+
                         <motion.div
                             initial={{ x: "-100%" }}
                             animate={{ x: 0 }}
@@ -88,13 +89,14 @@ export default function MobileMenu() {
                                         <X className="w-5 h-5" />
                                     </button>
                                 </div>
-                                
+
                                 <ProfileHeader />
                                 <Breakline />
                                 <div className="mt-4 mb-4 flex-1">
                                     <Menu />
                                 </div>
                                 <Breakline />
+                                {isAuthStatus == "authenticated" && <LogoutButton />}
                                 <Copyright />
                             </div>
                         </motion.div>

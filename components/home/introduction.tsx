@@ -7,7 +7,7 @@ export default function Introduction() {
     const t = useTranslations("HomePage");
     return (
         <section className="space-y-6 bg-cover bg-no-repeat">
-            <div data-aos="fade-up" className="flex flex-col items-start justify-between gap-4 md:flex-row md:items-center">
+            <div data-aos="fade-up" className="flex flex-col items-start justify-between gap-4 lg:flex-row lg:items-center">
                 <div className="text-3xl font-medium text-neutral-900 dark:text-neutral-50">
                     <h1>{t("intro")}</h1>
                 </div>
