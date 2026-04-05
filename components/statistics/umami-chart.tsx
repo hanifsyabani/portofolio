@@ -37,7 +37,7 @@ const TrafficTrendsChart = ({ data }: DataProps) => {
         },
       },
       legend: {
-        data: ["Sessions", "Page views"],
+        data: ["Page views"],
         top: 0,
         textStyle: {
           color: textColor,
@@ -76,19 +76,7 @@ const TrafficTrendsChart = ({ data }: DataProps) => {
         },
       ],
       series: [
-        {
-          name: "Sessions",
-          type: "bar",
-          stack: "traffic",
-          emphasis: {
-            focus: "series",
-          },
-          itemStyle: {
-            color: "rgba(6, 30, 151, 0.7)",
-            borderRadius: [0, 0, 4, 4],
-          },
-          data: data?.sessions?.map((point) => point.y) || [],
-        },
+        
         {
           name: "Page views",
           type: "bar",

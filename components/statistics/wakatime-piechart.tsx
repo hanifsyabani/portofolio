@@ -50,12 +50,11 @@ export default function WakaTimePieChart({ data }: { data: WakaTimeData }) {
                 data: data.languages.map((lang, index) => ({
                     value: lang.percent,
                     name: lang.name,
-                    itemStyle: { color: lang.color || COLORS[index % COLORS.length] },
+                    itemStyle: { color: COLORS[index % COLORS.length] },
                 })),
             },
         ],
 
-        // ✅ RESPONSIVE CONFIG
         media: [
             {
                 query: {

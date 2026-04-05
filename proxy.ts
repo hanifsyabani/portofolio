@@ -5,16 +5,13 @@ import { routing } from './i18n/routing'
 
 const intlMiddleware = createMiddleware({
   ...routing,
-  localeDetection: false,
-})
+  })
 
 export async function proxy(request: NextRequest) {
-  // Skip Supabase session refresh for auth callback (it handles its own session)
-  if (request.nextUrl.pathname.startsWith('/auth/callback')) {
+  if (request.nextUrl.pathname.startsWith('/auth/')) {
     return NextResponse.next()
   }
 
-  // Create a response using next-intl middleware
   let response = intlMiddleware(request)
 
   // Create Supabase client with cookie handling on the response

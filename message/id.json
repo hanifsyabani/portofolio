@@ -81,8 +81,12 @@
       "languages": "Bahasa Teratas",
       "editors": "Editor Teratas",
       "operating_systems": "Sistem Operasi",
+      "categories": "Kategori",
       "total_time": "Total Waktu",
-      "daily_average": "Rata-rata Harian"
+      "daily_average": "Rata-rata Harian",
+      "date_range": "Rentang Tanggal",
+      "best_language": "Bahasa Terbaik",
+      "language_ranking": "Peringkat Bahasa"
     }
   },
   "ContactPage": {

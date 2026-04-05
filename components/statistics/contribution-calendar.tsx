@@ -3,6 +3,7 @@
 import clsx from "clsx";
 import { useState } from "react";
 import { useTranslations } from "next-intl";
+import { useTheme } from "next-themes";
 
 interface Contribution {
   date: string;
@@ -27,6 +28,7 @@ interface CalendarProps {
 }
 
 export default function ContributionCalendar({ weeks = [], months = [], colors = [] }: CalendarProps) {
+  const { theme} = useTheme()
   const t = useTranslations("StatisticsPage");
   const [selectContribution, setSelectContribution] = useState<{
     count: number | null;
@@ -75,9 +77,9 @@ export default function ContributionCalendar({ weeks = [], months = [], colors =
           {weeks.map((week) => (
             <div key={String(week.firstDay)}>
               {week.contributionDays.map((contribution) => {
-                
                 const getColorByCount = (count: number) => {
-                  if (count === 0) return "#454545ff";
+                  if (count === 0 && theme === "dark") return "#454545ff";
+                  if (count === 0 && theme === "light") return "#ebedf0";
                   if (count < 3) return "#9be9a8";
                   if (count < 6) return "#40c463";
                   if (count < 10) return "#30a14e";
