@@ -18,7 +18,7 @@ export default function AuthButton() {
 
   return (
     <div className="flex items-center justify-center">
-      <button onClick={() => login('google')} className="flex items-center gap-2 bg-white rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-300 cursor-pointer transition-colors p-2 text-neutral-900"  >
+      <button onClick={() => login('google')} className="flex items-center gap-2 dark:bg-white bg-neutral-300 rounded-xl hover:bg-neutral-200 dark:hover:bg-neutral-300 cursor-pointer transition-colors p-2 text-neutral-900"  >
         <FcGoogle className="text-xl" />
         Sign in with Google
       </button>

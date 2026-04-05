@@ -81,8 +81,12 @@
       "languages": "Top Languages",
       "editors": "Top Editors",
       "operating_systems": "Operating Systems",
+      "categories": "Categories",
       "total_time": "Total Time",
-      "daily_average": "Daily Average"
+      "daily_average": "Daily Average",
+      "date_range": "Date Range",
+      "best_language": "Best Language",
+      "language_ranking": "Language Ranking"
     }
   },
   "ContactPage": {

@@ -19,8 +19,8 @@ export default function Skills() {
 
             <div className="space-y-12">
                 <div className="grid grid-cols-1 gap-4 grid-cols-4 lg:grid-cols-8">
-                    {skillCategories.map((category) => (
-                        <div key={category.name} >
+                    {skillCategories.map((category, index) => (
+                        <div key={category.name} data-aos="fade-up" data-aos-delay={index * 20} >
                             <SkillCard
                                 key={category.name}
                                 title={category.name || ""}
