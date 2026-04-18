@@ -44,13 +44,13 @@ export default function ProfileHeader() {
             <div>
                 <RotatingText
                     texts={["Muhammad Hanif Sya'bani", "Frontend Developer", "ML Enthusiast"]}
-                    mainClassName="text-xs inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500 text-blue-500 font-medium dark:bg-black shadow-[inset_0_0_20px_rgba(250,204,21,0.25)]"
+                    mainClassName="text-xs inline-flex items-center gap-2 px-4 py-2 rounded-full border border-blue-500 text-blue-500 font-medium dark:bg-black"
                     staggerFrom={"last"}
                     initial={{ y: "100%" }}
                     animate={{ y: 0 }}
                     exit={{ y: "-120%" }}
                     staggerDuration={0.025}
-                    splitLevelClassName="overflow-hidden pb-0.5 sm:pb-1 md:pb-1"
+                    splitLevelClassName="overflow-hidden font-bold pb-0.5 sm:pb-1 md:pb-1"
                     transition={{ type: "spring", damping: 30, stiffness: 400 }}
                     rotationInterval={5000}
                 />

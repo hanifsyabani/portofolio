@@ -20,10 +20,11 @@ export default function AchievementCard(achievement: Achievement) {
     <>
       <article
         onClick={() => setDialogOpen(true)}
-        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/[0.06] dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 bg-neutral-100 dark:bg-neutral-900 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(96,165,250,0.12)] hover:translate-y-[-2px]"
+        className="group relative cursor-pointer overflow-hidden rounded-2xl border border-white/6 dark:bg-linear-to-br from-neutral-900/60 via-neutral-900/40 to-neutral-950/80 bg-neutral-100 dark:bg-neutral-900 transition-all duration-500 hover:border-blue-400/20 hover:shadow-[0_8px_40px_-12px_rgba(96,165,250,0.12)] hover:translate-y-0.5"
       >
         <div className="relative h-48 w-full overflow-hidden bg-neutral-800/40">
           <Image
+            unoptimized
             src={imageUrl}
             alt={name || "Achievement"}
             fill
@@ -52,19 +53,19 @@ export default function AchievementCard(achievement: Achievement) {
 
           <div className="flex flex-wrap gap-2 pt-1">
             {achievement.type && (
-              <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">
+              <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/8 px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">
                 <Award className="h-3 w-3" />
                 {achievement.type}
               </span>
             )}
             {achievement.category && (
-              <span className="inline-flex rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium capitalize text-neutral-400">
+              <span className="inline-flex rounded-full border border-white/10 bg-white/4 px-2.5 py-0.5 text-[11px] font-medium capitalize text-neutral-400">
                 {achievement.category}
               </span>
             )}
           </div>
 
-        
+
         </div>
       </article>
 
