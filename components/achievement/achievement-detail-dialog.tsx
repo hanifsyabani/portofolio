@@ -41,12 +41,13 @@ export default function AchievementDetailDialog({
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
-      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/[0.06] dark:bg-neutral-950 bg-white p-0 max-w-6xl sm:rounded-2xl">
+      <DialogContent className="overflow-auto h-[calc(100vh-6rem)] border-white/6 dark:bg-neutral-950 bg-white p-0 max-w-6xl sm:rounded-2xl">
         <DialogTitle className="sr-only">{name}</DialogTitle>
 
         <div className="lg:flex flex-col md:flex-row">
           <div className="relative w-full h-full  flex items-center justify-center bg-neutral-900/80 md:w-[70%]">
             <Image
+              unoptimized
               src={imageUrl}
               alt={name || "Achievement Certificate"}
               fill
@@ -54,16 +55,16 @@ export default function AchievementDetailDialog({
             />
           </div>
 
-          <div className="hidden lg:flex flex-1 flex-col border-t border-white/[0.06] p-6 md:border-l md:border-t-0 md:p-8">
+          <div className="hidden lg:flex flex-1 flex-col border-t border-white/6 p-6 md:border-l md:border-t-0 md:p-8">
             <div className="mb-4 flex flex-wrap gap-2">
               {achievement.type && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/[0.08] px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">
+                <span className="inline-flex items-center gap-1 rounded-full border border-blue-400/20 bg-blue-400/8 px-2.5 py-0.5 text-[11px] font-medium capitalize text-blue-400">
                   <Award className="h-3 w-3" />
                   {achievement.type}
                 </span>
               )}
               {achievement.category && (
-                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/[0.04] px-2.5 py-0.5 text-[11px] font-medium capitalize dark:text-neutral-400 text-neutral-600">
+                <span className="inline-flex items-center gap-1 rounded-full border border-white/10 bg-white/4 px-2.5 py-0.5 text-[11px] font-medium capitalize dark:text-neutral-400 text-neutral-600">
                   <Tag className="h-3 w-3" />
                   {achievement.category}
                 </span>
