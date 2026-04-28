@@ -48,9 +48,9 @@ const GITHUB_USER_QUERY = `query($username: String!) {
   }
 }`;
 
-export async function GET(){
+export async function GET() {
   try {
-    const {username, token} = GITHUB_ACCOUNTS
+    const { username, token } = GITHUB_ACCOUNTS
 
     const res = await axios.post(GITHUB_USER_ENDPOINT, {
       query: GITHUB_USER_QUERY,

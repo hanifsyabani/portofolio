@@ -11,7 +11,7 @@ type Props = {
 export default function Room({ data, userId }: Props) {
   return (
     <div className="flex flex-col p-5 mb-8 space-y-8 max-h-[500px] overflow-y-auto rounded-xl bg-neutral-100 dark:bg-neutral-900 scrollbar-thin scrollbar-thumb-neutral-300 dark:scrollbar-thumb-neutral-700">
-      {data.map((msg) => {
+      {data?.map((msg) => {
         const isMe = msg.userId === userId;
 
         return (

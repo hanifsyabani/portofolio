@@ -44,17 +44,17 @@ export default function GithubStats() {
 
       <div className="space-y-8">
         <div className="grid grid-cols-2 gap-4 lg:grid-cols-3">
-          <GithubStatsCard title={t("github.total_contributions")} data={data.contributionsCollection.contributionCalendar.totalContributions} />
-          <GithubStatsCard title={t("github.repositories")} data={data.repositories.totalCount} />
+          <GithubStatsCard title={t("github.total_contributions")} data={data?.contributionsCollection.contributionCalendar.totalContributions} />
+          <GithubStatsCard title={t("github.repositories")} data={data?.repositories?.totalCount} />
           <GithubStatsCard title={t("github.total_stars")} data={totalStars} />
 
         </div>
 
         <div>
           <ContributionCalendar
-            weeks={stats.contributionsCollection.contributionCalendar.weeks}
-            months={stats.contributionsCollection.contributionCalendar.months}
-            colors={stats.contributionsCollection.contributionCalendar.colors}
+            weeks={stats?.contributionsCollection.contributionCalendar.weeks}
+            months={stats?.contributionsCollection.contributionCalendar.months}
+            colors={stats?.contributionsCollection.contributionCalendar.colors}
           />
         </div>
 
